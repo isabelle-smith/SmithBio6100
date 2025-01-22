@@ -4,5 +4,6 @@ title: "Home"
 
 Hello, World!
 
--  https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html
 
+Sources:  
+-  https://rstudio4edu.github.io/rstudio4edu-book/make-rmd.html
