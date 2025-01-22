@@ -1,10 +1,16 @@
-name: "isabelle-smith-website"
+name: "smithbiol6100-website"
 navbar:
-  title: "Isabelle Smith - Website"
+  title: "Isabelle Smith - Biol 6100"
   left:
     - text: "Home"
+      icon: fa-house
       href: index.html
     - text: "About"
+      icon: fa-circle-info
       href: about.html
     - text: "Homework"
+      icon: fa-file
       href: homework.html
+output:
+  html_document:
+    theme: paper

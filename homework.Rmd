@@ -1,0 +1,13 @@
+---
+title: "Homework"
+author: "Isabelle Smith"
+date: "Spring 2025"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+- [Week 1](HW01-default-text.pdf)
+

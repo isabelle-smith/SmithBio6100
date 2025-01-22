@@ -1,5 +1,5 @@
 ---
-title: "About This Website"
+title: "About"
 ---
 
-More about this website.
+![Isabelle and Amelie](isabelle-and-amelie.jpg)
