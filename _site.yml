@@ -11,6 +11,3 @@ navbar:
     - text: "Homework"
       icon: fa-file
       href: homework.html
-output:
-  html_document:
-    theme: paper
