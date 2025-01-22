@@ -12,3 +12,4 @@ navbar:
     - text: "Homework"
       icon: fa-file
       href: homework.html
+theme: jekyll-theme-time-machine
