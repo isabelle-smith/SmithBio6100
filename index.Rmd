@@ -6,5 +6,7 @@ Hello, World!
 
 
 Sources:  
-- https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html
-- https://rstudio4edu.github.io/rstudio4edu-book/make-rmd.html
+- https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html  
+- https://rstudio4edu.github.io/rstudio4edu-book/make-rmd.html  
+- https://rstudio4edu.github.io/rstudio4edu-book/rmd-dress.html  
+- https://rstudio4edu.github.io/rstudio4edu-book/rmd-fancy.html  
