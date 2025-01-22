@@ -1,6 +1,5 @@
 ---
 title: "Homework"
-author: "Isabelle Smith"
 date: "Spring 2025"
 output: html_document
 ---
