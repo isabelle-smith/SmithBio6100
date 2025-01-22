@@ -1,4 +1,5 @@
 name: "smithbiol6100-website"
+output_dir: docs
 navbar:
   title: "Isabelle Smith - Biol 6100"
   left:
