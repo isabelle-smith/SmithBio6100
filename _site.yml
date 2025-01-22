@@ -1,0 +1,10 @@
+name: "isabelle-smith-website"
+navbar:
+  title: "Isabelle Smith - Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Homework"
+      href: homework.html
