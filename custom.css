@@ -25,6 +25,10 @@
     ul.nav.navbar-nav li a {
         background-color:var(--bg-color);
     }
+    
+    ul.nav.navbar-nav li a:hover {
+        background-color: var(--highlight-color);
+    }
 
     ul.nav.navbar-nav li.active a {
         background-color:white;
@@ -33,7 +37,8 @@
     }
     
     ul.nav.navbar-nav li.active a:hover {
-        background-color:var(--highlight-color);
+        background-color: white;
+        color:var(--highlight-color);
     }
     
     div.navbar-header {
@@ -47,9 +52,14 @@
 
 /* CHANGES TO BOTH */
 
-div.navbar-header.active > a {
+div.navbar-header a.navbar-brand {
     color: var(--dark-color);
 }
+
+div.navbar-header a.navbar-brand:hover {
+    text-shadow: 1px 1px var(--highlight-color);
+}
+
 ul.nav.navbar-nav li a {
         color:black;
     }
