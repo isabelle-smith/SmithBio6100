@@ -3,3 +3,9 @@ title: "About"
 ---
 
 ![Isabelle and Amelie](isabelle-and-amelie.jpg)
+
+
+#### Misc
+
+- [Beamer Template for PowerPoint](https://github.com/sbryngelson/Fake-Beamer)
+

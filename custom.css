@@ -57,7 +57,7 @@ div.navbar-header a.navbar-brand {
 }
 
 div.navbar-header a.navbar-brand:hover {
-    text-shadow: 1px 1px var(--highlight-color);
+    text-shadow: 1px 1px var(--other-color);
 }
 
 ul.nav.navbar-nav li a {
@@ -67,3 +67,11 @@ ul.nav.navbar-nav li a {
 ul.nav.navbar-nav li.active a {
         color:black;
     }
+    
+/* MORE */
+
+div.float img {
+    border: var(--border);
+    border-radius: 5%;
+    margin: 5%;
+}

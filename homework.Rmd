@@ -10,8 +10,3 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - [Week 1](HW01-default-text.pdf)
 - [Week 2](about.html)
-
-
-#### Misc
-
-- [Beamer Template for PowerPoint](https://github.com/sbryngelson/Fake-Beamer)
