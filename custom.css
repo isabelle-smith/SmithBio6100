@@ -32,6 +32,10 @@
         padding-bottom: 1.2em;
     }
     
+    ul.nav.navbar-nav li.active a:hover {
+        background-color:var(--highlight-color);
+    }
+    
     div.navbar-header {
         padding-top: 0.75em;
     }
