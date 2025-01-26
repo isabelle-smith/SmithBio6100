@@ -85,6 +85,10 @@ ul.nav.navbar-nav li.active a:hover {
         background-color: inherit;
     }
 
+    div.container div.navbar-header a.navbar-brand:hover {
+        color: var(--other-color);
+    }
+
     div.navbar-fixed-top {
         border-bottom: var(--border);
     }
