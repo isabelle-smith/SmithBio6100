@@ -2,8 +2,6 @@
 title: "Home"
 ---
 
-Hello, World!
-
 
 Sources:  
 - https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html  
