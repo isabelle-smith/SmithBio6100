@@ -1,12 +1,13 @@
 ---
 title: "Homework"
-date: "Spring 2025"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+#### Spring 2025
 
 - [Week 1](HW01-default-text.pdf)
 - [Week 2](about.html)
