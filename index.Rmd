@@ -8,3 +8,9 @@ Sources:
 - https://rstudio4edu.github.io/rstudio4edu-book/make-rmd.html  
 - https://rstudio4edu.github.io/rstudio4edu-book/rmd-dress.html  
 - https://rstudio4edu.github.io/rstudio4edu-book/rmd-fancy.html  
+- https://getbootstrap.com/docs/4.0/components/navs/#tabs  
+- https://mdbootstrap.com/docs/standard/navigation/navbar/  
+- https://fonts.google.com/specimen/La+Belle+Aurore  
+- https://fonts.google.com/specimen/Playwrite+CA+Guides  
+- https://fonts.google.com/specimen/Kavivanar  
+
