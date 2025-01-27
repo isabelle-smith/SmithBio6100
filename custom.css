@@ -56,16 +56,25 @@ div.navbar-fixed-top {
         border-bottom: var(--border);
     }
 
-div.navbar-collapse.collapse.in{
+div.navbar-fixed-top {
+        /*border-top: var(--border);*/
+        border-bottom: var(--border);
+    }
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+    border-color: black;
+}
+
+div.navbar-collapse{
     border-top: var(--border);
 }
 
-div.navbar-collapse.collapse.in ul li:nth-child(even){
+div.navbar-collapse ul li:nth-child(even){
     border-top: thin dashed grey;
     border-bottom: thin dashed grey;
 }
 
-div.navbar-collapse.collapse.in ul li:nth-last-child(-n+1){
+div.navbar-collapse ul li:nth-last-child(-n+1){
     border-bottom: none;
 }
 
@@ -117,6 +126,14 @@ div.navbar-collapse.collapse.in ul li:nth-last-child(-n+1){
     div.navbar-fixed-top {
         background-color: rgb(225,235,255);
         border-bottom: var(--border);
+    }
+    
+    div.navbar-collapse{
+        border: none;
+    }
+
+    div.navbar-collapse ul li:nth-child(even){
+        border: none;
     }
 }
 
