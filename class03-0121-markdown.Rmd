@@ -1,0 +1,124 @@
+---
+title: "Markdown"
+author: "Isabelle Smith"
+date: "2025-01-21"
+output: 
+  html_document: 
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Test text: blah blah blah.
+
+Two returns for new paragraph.
+
+First line. (Two spaces...)  
+Second line.
+
+# Biggest Header
+
+## Second Header
+
+
+
+
+### (Multiple Returns...) Third Header
+
+Use one set of asterisks for *italic text* and two sets for **bold text**. Use carets for ^superscript^ and tildes for ~subscript~. Two tildes makes ~~strikethrough~~.
+
+- list item  
+- (two spaces...) list item
+  + indented list item
+
+
+wow! a [link](www.google.com)!
+
+Table | with | text
+------|------|-----
+lots  | of   | text
+so    | many | rows
+
+
+#### Fencing:
+
+For `in-line` use a single tick mark, and for  
+
+```
+centered
+```
+
+use three.
+
+
+#### In-Line Code:
+
+Insert a calculation and only show output: `r 7 + pi`
+
+#### Code Chunks:
+
+```{r}
+
+7 + pi
+
+```
+
+
+Adding `{r eval=TRUE, echo=FALSE}`:
+
+```{r eval=TRUE, echo=FALSE}
+
+7 + pi
+
+```
+
+
+#### LaTeX:
+
+Single dollar signs: $a+b=c$
+
+Double dollar signs: (new line)
+
+$$a+b=c$$
+
+
+##### Getting fancy:
+
+sub- and superscripts...
+
+$$H_A: \sigma^2 \neq 0$$
+
+order of operations...
+
+$$S=cA^z_1 + z_{2+x}$$
+
+
+a classic...
+
+$$f(x) = \frac{1}{\sqrt{2\pi \sigma}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}$$
+
+summation...
+
+$$\sum_{i=1}^n (y_i - \bar{y})^2$$
+
+escaping characters...
+
+$$\backslash$$
+
+mixing...
+
+$$P(\mbox{Species A} | weight>2.5) = a$$
+
+
+```{r}
+
+## comment
+
+set.seed(777)
+
+rpois(10,7)
+
+```
+
