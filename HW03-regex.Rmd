@@ -9,9 +9,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+&nbsp;
+
 ## Regular Expression Puzzles  
 
-*Done in Notepad++ v8.7.5*
+*Done in Notepad++ v8.7.5*  
 &nbsp;
 
 ### 1  
