@@ -11,3 +11,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - [Week 1](HW01-default-text.pdf)
 - [Week 2](about.html)
+- [Week 3](HW03-regex.html)

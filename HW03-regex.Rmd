@@ -1,0 +1,104 @@
+---
+title: "Homework 3"
+author: "Isabelle Smith"
+date: "2025-01-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Regular Expression Puzzles  
+
+*Done in Notepad++ v8.7.5*
+&nbsp;
+
+### 1  
+
+**Find:** `[ ]+`  
+**Replace:** `,`  
+
+Match (1 or more spaces).  
+Replace with (a comma).  
+&nbsp;
+
+### 2  
+
+**Find:** `(\w+), (\w+), ([\w+ ]+)`  
+**Replace:** `\2 \1 \(\3\)`
+
+Match (multiple letters, a comma and space, multiple letters, a comma and space, and multiple letters then a space repeated once or more).  
+Replace with (the second group of multiple letters, the first group of multiple letters, then the third group of letters and spaces in parentheses).  
+&nbsp;
+ 
+### 3  
+
+**Find:** `mp3 `  
+**Replace:** `mp3\n`
+
+Match (the exact string 'mp3' then a space).  
+Replace with ('mp3' then a new line).  
+&nbsp;
+
+### 4  
+
+**Find:** `(\d{4}) ([\w+ ]+)(.mp3)`  
+**Replace:** `\2_\1\3`  
+
+Match (4 digits, a space, multiple letters, '.mp3').  
+Replace with (the multiple letters, underscore, the four digits, '.mp3').  
+&nbsp;
+
+### 5  
+
+**Find:** `([A-Z])\w+,(\w+),\d+.\d,(\d+)`  
+**Replace:** `\1_\2,\3`  
+
+Match (an uppercase letter followed by one or more letters, comma, multiple letters, comma, one or more digits, a period, one digit, comma, one or more digits).  
+Replace with (the uppercase letter, underscore, the multiple letters, comma, the last digits).  
+&nbsp;
+
+### 6  
+
+**Find:** `([A-Z])\w+,(\w{4})\w*,\d+.\d,(\d+)`  
+**Replace:** `\1_\2,\3`  
+
+Match (an uppercase letter followed four letters followed by zero or more letters, comma, multiple letters, comma, one or more digits, a period, one digit, comma, one or more digits).  
+Replace with (the uppercase letter, underscore, the four letters, comma, the last digits).  
+&nbsp;
+
+### 7  
+
+**Find:** `(\w{3})\w*,(\w{3})\w*,(\d+.\d),(\d+)`  
+**Replace:** `\1\2, \4, \3`  
+
+Match (three letters followed by zero or more letters, comma, three letters followed by zero or more letters, comma, one or more digits then a period then one digit, comma, one or more digits).  
+Replace with (the first three letters, the second three letters, the last digits, the group of digits period digit).  
+&nbsp;
+
+### 8  
+
+**Find:** ` `  
+**Replace:**  
+
+Match (a space).  
+Replace with (nothing).  
+&nbsp;
+
+**Find:** `,NA,`  
+**Replace:** `,,`  
+
+Match (comma, 'NA', comma).  
+Replace with (two commas).  
+&nbsp;
+
+**Find:** `[^,/.a-zA-Z\d\s:]`  
+**Replace:**  
+
+Match (anything except comma, forward slash, letters, digits, and white space).  
+Replace with (nothing).  
+
+*NOTE: this removes the snake_case formatting of the variable names*
+
+**Alternate:** `(?:(?:(?:\w*)(?:[\*\?\@\%\#\$\&\-\)\(\^\!\+\_]+)(?:\w+))){1,}`

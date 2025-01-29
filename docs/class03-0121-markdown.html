@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Isabelle Smith" />
 
+<meta name="date" content="2025-01-21" />
 
-<title>Homework</title>
+<title>Markdown</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -278,18 +280,110 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Homework</h1>
+<h1 class="title toc-ignore">Markdown</h1>
+<h4 class="author">Isabelle Smith</h4>
+<h4 class="date">2025-01-21</h4>
 
 </div>
 
 
-<div id="spring-2025" class="section level4">
-<h4>Spring 2025</h4>
+<p>Test text: blah blah blah.</p>
+<p>Two returns for new paragraph.</p>
+<p>First line. (Two spaces…)<br />
+Second line.</p>
+<div id="biggest-header" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Biggest Header</h1>
+<div id="second-header" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Second Header</h2>
+<div id="multiple-returns-third-header" class="section level3"
+number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> (Multiple Returns…)
+Third Header</h3>
+<p>Use one set of asterisks for <em>italic text</em> and two sets for
+<strong>bold text</strong>. Use carets for <sup>superscript</sup> and
+tildes for <sub>subscript</sub>. Two tildes makes
+<del>strikethrough</del>.</p>
 <ul>
-<li><a href="HW01-default-text.pdf">Week 1</a></li>
-<li><a href="about.html">Week 2</a></li>
-<li><a href="HW03-regex.html">Week 3</a></li>
+<li>list item<br />
+</li>
+<li>(two spaces…) list item
+<ul>
+<li>indented list item</li>
+</ul></li>
 </ul>
+<p>wow! a <a href="www.google.com">link</a>!</p>
+<table>
+<thead>
+<tr class="header">
+<th>Table</th>
+<th>with</th>
+<th>text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>lots</td>
+<td>of</td>
+<td>text</td>
+</tr>
+<tr class="even">
+<td>so</td>
+<td>many</td>
+<td>rows</td>
+</tr>
+</tbody>
+</table>
+<div id="fencing" class="section level4" number="1.1.1.1">
+<h4><span class="header-section-number">1.1.1.1</span> Fencing:</h4>
+<p>For <code>in-line</code> use a single tick mark, and for</p>
+<pre><code>centered</code></pre>
+<p>use three.</p>
+</div>
+<div id="in-line-code" class="section level4" number="1.1.1.2">
+<h4><span class="header-section-number">1.1.1.2</span> In-Line
+Code:</h4>
+<p>Insert a calculation and only show output: 10.1415927</p>
+</div>
+<div id="code-chunks" class="section level4" number="1.1.1.3">
+<h4><span class="header-section-number">1.1.1.3</span> Code Chunks:</h4>
+<pre class="r"><code>7 + pi</code></pre>
+<pre><code>## [1] 10.14159</code></pre>
+<p>Adding <code>{r eval=TRUE, echo=FALSE}</code>:</p>
+<pre><code>## [1] 10.14159</code></pre>
+</div>
+<div id="latex" class="section level4" number="1.1.1.4">
+<h4><span class="header-section-number">1.1.1.4</span> LaTeX:</h4>
+<p>Single dollar signs: <span class="math inline">\(a+b=c\)</span></p>
+<p>Double dollar signs: (new line)</p>
+<p><span class="math display">\[a+b=c\]</span></p>
+<div id="getting-fancy" class="section level5" number="1.1.1.4.1">
+<h5><span class="header-section-number">1.1.1.4.1</span> Getting
+fancy:</h5>
+<p>sub- and superscripts…</p>
+<p><span class="math display">\[H_A: \sigma^2 \neq 0\]</span></p>
+<p>order of operations…</p>
+<p><span class="math display">\[S=cA^z_1 + z_{2+x}\]</span></p>
+<p>a classic…</p>
+<p><span class="math display">\[f(x) = \frac{1}{\sqrt{2\pi \sigma}}
+e^{-\frac{(x-\mu)^2}{2 \sigma^2}}\]</span></p>
+<p>summation…</p>
+<p><span class="math display">\[\sum_{i=1}^n (y_i -
+\bar{y})^2\]</span></p>
+<p>escaping characters…</p>
+<p><span class="math display">\[\backslash\]</span></p>
+<p>mixing…</p>
+<p><span class="math display">\[P(\mbox{Species A} | weight&gt;2.5) =
+a\]</span></p>
+<pre class="r"><code>## comment
+
+set.seed(777)
+
+rpois(10,7)</code></pre>
+<pre><code>##  [1]  8  7  6 15  8  2  6  4 12  5</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 

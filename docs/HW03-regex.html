@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Isabelle Smith" />
 
+<meta name="date" content="2025-01-29" />
 
-<title>Homework</title>
+<title>Homework 3</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -278,18 +280,111 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Homework</h1>
+<h1 class="title toc-ignore">Homework 3</h1>
+<h4 class="author">Isabelle Smith</h4>
+<h4 class="date">2025-01-29</h4>
 
 </div>
 
 
-<div id="spring-2025" class="section level4">
-<h4>Spring 2025</h4>
-<ul>
-<li><a href="HW01-default-text.pdf">Week 1</a></li>
-<li><a href="about.html">Week 2</a></li>
-<li><a href="HW03-regex.html">Week 3</a></li>
-</ul>
+<div id="regular-expression-puzzles" class="section level2">
+<h2>Regular Expression Puzzles</h2>
+<p><em>Done in Notepad++ v8.7.5</em>  </p>
+<div id="section" class="section level3">
+<h3>1</h3>
+<p><strong>Find:</strong> <code>[ ]+</code><br />
+<strong>Replace:</strong> <code>,</code></p>
+<p>Match (1 or more spaces).<br />
+Replace with (a comma).<br />
+ </p>
+</div>
+<div id="section-1" class="section level3">
+<h3>2</h3>
+<p><strong>Find:</strong> <code>(\w+), (\w+), ([\w+ ]+)</code><br />
+<strong>Replace:</strong> <code>\2 \1 \(\3\)</code></p>
+<p>Match (multiple letters, a comma and space, multiple letters, a comma
+and space, and multiple letters then a space repeated once or
+more).<br />
+Replace with (the second group of multiple letters, the first group of
+multiple letters, then the third group of letters and spaces in
+parentheses).<br />
+ </p>
+</div>
+<div id="section-2" class="section level3">
+<h3>3</h3>
+<p><strong>Find:</strong> <code>mp3</code><br />
+<strong>Replace:</strong> <code>mp3\n</code></p>
+<p>Match (the exact string ‘mp3’ then a space).<br />
+Replace with (‘mp3’ then a new line).<br />
+ </p>
+</div>
+<div id="section-3" class="section level3">
+<h3>4</h3>
+<p><strong>Find:</strong> <code>(\d{4}) ([\w+ ]+)(.mp3)</code><br />
+<strong>Replace:</strong> <code>\2_\1\3</code></p>
+<p>Match (4 digits, a space, multiple letters, ‘.mp3’).<br />
+Replace with (the multiple letters, underscore, the four digits,
+‘.mp3’).<br />
+ </p>
+</div>
+<div id="section-4" class="section level3">
+<h3>5</h3>
+<p><strong>Find:</strong>
+<code>([A-Z])\w+,(\w+),\d+.\d,(\d+)</code><br />
+<strong>Replace:</strong> <code>\1_\2,\3</code></p>
+<p>Match (an uppercase letter followed by one or more letters, comma,
+multiple letters, comma, one or more digits, a period, one digit, comma,
+one or more digits).<br />
+Replace with (the uppercase letter, underscore, the multiple letters,
+comma, the last digits).<br />
+ </p>
+</div>
+<div id="section-5" class="section level3">
+<h3>6</h3>
+<p><strong>Find:</strong>
+<code>([A-Z])\w+,(\w{4})\w*,\d+.\d,(\d+)</code><br />
+<strong>Replace:</strong> <code>\1_\2,\3</code></p>
+<p>Match (an uppercase letter followed four letters followed by zero or
+more letters, comma, multiple letters, comma, one or more digits, a
+period, one digit, comma, one or more digits).<br />
+Replace with (the uppercase letter, underscore, the four letters, comma,
+the last digits).<br />
+ </p>
+</div>
+<div id="section-6" class="section level3">
+<h3>7</h3>
+<p><strong>Find:</strong>
+<code>(\w{3})\w*,(\w{3})\w*,(\d+.\d),(\d+)</code><br />
+<strong>Replace:</strong> <code>\1\2, \4, \3</code></p>
+<p>Match (three letters followed by zero or more letters, comma, three
+letters followed by zero or more letters, comma, one or more digits then
+a period then one digit, comma, one or more digits).<br />
+Replace with (the first three letters, the second three letters, the
+last digits, the group of digits period digit).<br />
+ </p>
+</div>
+<div id="section-7" class="section level3">
+<h3>8</h3>
+<p><strong>Find:</strong> <code></code><br />
+<strong>Replace:</strong></p>
+<p>Match (a space).<br />
+Replace with (nothing).<br />
+ </p>
+<p><strong>Find:</strong> <code>,NA,</code><br />
+<strong>Replace:</strong> <code>,,</code></p>
+<p>Match (comma, ‘NA’, comma).<br />
+Replace with (two commas).<br />
+ </p>
+<p><strong>Find:</strong> <code>[^,/.a-zA-Z\d\s:]</code><br />
+<strong>Replace:</strong></p>
+<p>Match (anything except comma, forward slash, letters, digits, and
+white space).<br />
+Replace with (nothing).</p>
+<p><em>NOTE: this removes the snake_case formatting of the variable
+names</em></p>
+<p><strong>Alternate:</strong>
+<code>(?:(?:(?:\w*)(?:[\*\?\@\%\#\$\&amp;\-\)\(\^\!\+\_]+)(?:\w+))){1,}</code></p>
+</div>
 </div>
 
 
