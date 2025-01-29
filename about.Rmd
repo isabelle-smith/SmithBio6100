@@ -8,5 +8,7 @@ title: "About"
 
 #### Misc
 
-- [Beamer Template for PowerPoint](https://github.com/sbryngelson/Fake-Beamer)
+- Beamer Template for PowerPoint: [link](https://github.com/sbryngelson/Fake-Beamer)
+- Turn Off Scientific Notation in R: `options(scipen=999)`
+- Change Git Commit Message: `git commit --amend`
 
