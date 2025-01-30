@@ -11,4 +11,5 @@ title: "About"
 - Beamer Template for PowerPoint: [link](https://github.com/sbryngelson/Fake-Beamer)
 - Turn Off Scientific Notation in R: `options(scipen=999)`
 - Change Git Commit Message: `git commit --amend`
+- RegEx Tester: [link](https://regexr.com/)
 

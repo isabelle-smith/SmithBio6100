@@ -3,6 +3,7 @@
 :root {
     --color: rgb(179, 216, 180);
     --bg-color: rgb(195, 225, 255);
+    --light-bg-color: rgb(225,235,255);
     --light-color: rgb(229, 246, 230);
     --dark-color: rgb(6, 112, 64); /* #427040 */
     --highlight-color: rgb(255, 215, 105);
@@ -94,7 +95,7 @@ div.navbar-collapse ul li:nth-last-child(-n+1){
     }
 
     ul.nav.navbar-nav li a {
-        background-color:var(--bg-color);
+        background-color:royalblue;
         font-family: Kavivanar;
     }
     
@@ -124,7 +125,7 @@ div.navbar-collapse ul li:nth-last-child(-n+1){
     }
 
     div.navbar-fixed-top {
-        background-color: rgb(225,235,255);
+        background-color: var(--bg-color);
         border-bottom: var(--border);
     }
     
@@ -163,9 +164,16 @@ ul.nav.navbar-nav li.active a {
 div.float img {
     border: var(--border);
     border-radius: 5%;
-    margin: 5%;
+    margin: 2.5% 5% 5% 5%;
+    max-width: 50%;
 }
 
 .figcaption{
     display:none;
+}
+
+h1{
+    color: var(--other-color);
+    font-family: "Courier New", monospace;
+    font-weight: bold;
 }

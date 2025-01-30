@@ -103,4 +103,8 @@ Replace with (nothing).
 
 *NOTE: this removes the snake_case formatting of the variable names*
 
-**Alternate:** `(?:(?:(?:\w*)(?:[\*\?\@\%\#\$\&\-\)\(\^\!\+\_]+)(?:\w+))){1,}`
+**Alternate:** `(?:(?:(?:\w*)(?:[\*\?\@\%\#\$\&\-\)\(\^\!\+\_]+)(?:\w+))){1,}`  
+&nbsp;
+
+Sources:  
+- https://stackoverflow.com/questions/6053541/regex-every-non-alphanumeric-character-except-white-space-or-colon
