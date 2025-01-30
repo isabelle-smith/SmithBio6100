@@ -128,8 +128,32 @@ sample(x=long_vec,replace=TRUE,prob=long_vec) # what does this do?
 
 
 
-
+## Techniques for subsetting atomic vectors
 ## - - - - - - -
+z <- c(3.1, 9.2, 1.3, 0.4, 7.5)
 
+# positive index values
+z[c(2,3)]
+
+# negative index values to exclude elements
+z[-c(2,3)]
+
+# create a vector of logical elements to select conditions
+
+z[z<3]
+
+# equivalent to the following
+tester <- z<3
+print(tester)
+z[tester]
+
+# also use which() function to find subscript indicators
+which(z<3)
+
+# this works, but is overkill; just use the boolean operator
+z[which(z<3)]
+
+# can also use length() for relative positioning to last element
+z[-(length(z):(length(z)-2))]
 
 
