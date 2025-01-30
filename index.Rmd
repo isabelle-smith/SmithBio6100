@@ -14,3 +14,11 @@ title: "Home"
 - https://fonts.google.com/specimen/Playwrite+CA+Guides  
 - https://fonts.google.com/specimen/Kavivanar  
 
+&nbsp;
+
+#### Miscellaneous:  
+
+- Beamer Template for PowerPoint: https://github.com/sbryngelson/Fake-Beamer
+- Turn Off Scientific Notation in R: `options(scipen=999)`
+- Change Git Commit Message: `git commit --amend`
+- RegEx Tester: https://regexr.com/
