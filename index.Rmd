@@ -13,6 +13,9 @@ title: "Home"
 - https://fonts.google.com/specimen/La+Belle+Aurore  
 - https://fonts.google.com/specimen/Playwrite+CA+Guides  
 - https://fonts.google.com/specimen/Kavivanar  
+- https://stackoverflow.com/questions/35037482/favicon-with-github-pages  
+- https://iconduck.com/emojis/37063/woman-scientist-dark-skin-tone  
+- https://bookdown.org/yihui/rmarkdown-cookbook/favicon.html  
 
 &nbsp;
 

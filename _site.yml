@@ -15,3 +15,5 @@ navbar:
 output:
   html_document:
     css: custom.css
+    includes:
+      in_header: header.html
