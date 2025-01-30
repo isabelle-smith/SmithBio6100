@@ -79,8 +79,11 @@ rep(x=my_vec,each=my_vec) # and this?
 ## - - - - - - -
 seq(from=2, to=4) # set limits for integer sequences
 2:4 # very common short cut with no explicit function wrappers
+`:`(2,4)      ## added
 seq(from=2,to=4,by=0.5) # use a by function can generate real numbers
+seq(from=2,to=4,by=0.67)       ## added
 x <- seq(from=2, to=4,length=7) # sometimes easier to just specify the length
+print(x)       ## added
 my_vec <- 1:length(x) # commonly used, but actually slow
 print(my_vec)
 seq_along(my_vec) # much faster for models and big data!
