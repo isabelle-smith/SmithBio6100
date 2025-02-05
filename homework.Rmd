@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 <div class="hw-page">  
 
 | Week                             | Description                    |
-|----------------------------------|--------------------------------|
+|:--------------------------------:|--------------------------------|
 | [Week 1](HW01-default-text.pdf)  | knit default `.rmd` to `.pdf`  |
 | [Week 2](about.html)             | build (this) website           |
 | [Week 3](HW03-regex.html)        | regex puzzles                  |

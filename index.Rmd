@@ -16,6 +16,8 @@ title: "Home"
 - https://stackoverflow.com/questions/35037482/favicon-with-github-pages  
 - https://iconduck.com/emojis/37063/woman-scientist-dark-skin-tone  
 - https://bookdown.org/yihui/rmarkdown-cookbook/favicon.html  
+- https://stackoverflow.com/a/19316337  
+- https://stackoverflow.com/a/635863  
 
 &nbsp;
 

@@ -177,3 +177,38 @@ h1{
     font-family: "Courier New", monospace;
     font-weight: bold;
 }
+
+div.hw-page table{
+    max-width: 65%;
+    margin: 5% 0% 5% 2.5%;
+}
+
+div.hw-page table tbody tr > *:nth-child(1){
+    width:40%;
+    text-align:center;
+}
+
+/* Tables # # # # # # # */
+
+table{
+    border: var(--border);
+    border-radius: 2em;
+    border-collapse: separate;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    border-color: black;
+    padding: 1em;
+}
+
+.table>thead>tr>th{
+    background-color: var(--light-bg-color);
+}
+
+.table>caption+thead>tr:first-child>td:first-child, .table>caption+thead>tr:first-child>th:first-child, .table>colgroup+thead>tr:first-child>td:first-child, .table>colgroup+thead>tr:first-child>th:first-child, .table>thead:first-child>tr:first-child>td:first-child, .table>thead:first-child>tr:first-child>th:first-child{
+    border-radius: 2em 0 0 0;
+}
+
+.table>caption+thead>tr:first-child>td:last-child, .table>caption+thead>tr:first-child>th:last-child, .table>colgroup+thead>tr:first-child>td:last-child, .table>colgroup+thead>tr:first-child>th:last-child, .table>thead:first-child>tr:first-child>td:last-child, .table>thead:first-child>tr:first-child>th:last-child{
+    border-radius: 0 2em 0 0;
+}
