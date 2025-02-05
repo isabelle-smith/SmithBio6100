@@ -11,9 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <div class="hw-page">  
 
-- [Week 1](HW01-default-text.pdf)  
-- [Week 2](about.html)  
-- [Week 3](HW03-regex.html)  
-- [Week 4](HW04-vectors.html)  
+| Week                             | Description                    |
+|----------------------------------|--------------------------------|
+| [Week 1](HW01-default-text.pdf)  | knit default `.rmd` to `.pdf`  |
+| [Week 2](about.html)             | build (this) website           |
+| [Week 3](HW03-regex.html)        | regex puzzles                  |
+| [Week 4](HW04-vectors.html)      | vectors                        |
 
 </div>
