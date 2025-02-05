@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Isabelle Smith" />
 
+<meta name="date" content="2025-02-05" />
 
-<title>Homework</title>
+<title>Homework 4</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -279,24 +281,115 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Homework</h1>
+<h1 class="title toc-ignore">Homework 4</h1>
+<h4 class="author">Isabelle Smith</h4>
+<h4 class="date">2025-02-05</h4>
 
 </div>
 
 
-<div id="spring-2025" class="section level4">
-<h4>Spring 2025</h4>
-<div class="hw-page">
-<ul>
-<li><a href="HW01-default-text.pdf">Week 1</a><br />
-</li>
-<li><a href="about.html">Week 2</a><br />
-</li>
-<li><a href="HW03-regex.html">Week 3</a><br />
-</li>
-<li><a href="HW04-vectors.html">Week 4</a></li>
-</ul>
+<p> </p>
+<div id="question-1" class="section level3">
+<h3>Question 1:</h3>
+<pre class="r"><code>x = 1.1
+a = 2.2
+b = 3.3
+
+## a
+z = x^(a^b)
+print(z)</code></pre>
+<pre><code>## [1] 3.61714</code></pre>
+<pre class="r"><code>## b
+z = (x^a)^b
+print(z)</code></pre>
+<pre><code>## [1] 1.997611</code></pre>
+<pre class="r"><code>## c
+z = 3*x^3 + 2*x^2 +1
+print(z)</code></pre>
+<pre><code>## [1] 7.413</code></pre>
+<p> </p>
 </div>
+<div id="question-2" class="section level3">
+<h3>Question 2:</h3>
+<pre class="r"><code>## a
+a1 = seq(1,8,1)
+a2 = seq(7,1,-1)
+
+a3 = c(a1,a2)
+print(a3)</code></pre>
+<pre><code>##  [1] 1 2 3 4 5 6 7 8 7 6 5 4 3 2 1</code></pre>
+<pre class="r"><code>## b
+b1 = seq(1,5,1)
+
+b2 = rep(b1, times=b1)
+print(b2)</code></pre>
+<pre><code>##  [1] 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5</code></pre>
+<pre class="r"><code>## c
+c1 = seq(5,1,-1)
+c2 = rep(c1, times=b1)
+print(c2)</code></pre>
+<pre><code>##  [1] 5 4 4 3 3 3 2 2 2 2 1 1 1 1 1</code></pre>
+<p> </p>
+</div>
+<div id="question-3" class="section level3">
+<h3>Question 3:</h3>
+<pre class="r"><code>set.seed(77)
+
+q3_cartesian = runif(2, min=0,max=10)
+names(q3_cartesian) &lt;- c(&quot;x&quot;,&quot;y&quot;)
+print(q3_cartesian)</code></pre>
+<pre><code>##        x        y 
+## 2.912838 7.174690</code></pre>
+<pre class="r"><code>r = sqrt(sum(q3_cartesian^2))
+theta = atan(as.numeric(q3_cartesian[&quot;y&quot;] / q3_cartesian[&quot;x&quot;]))
+
+q3_polar = c(r, theta)
+names(q3_polar) &lt;- c(&quot;r&quot;, &quot;theta&quot;)
+print(q3_polar)</code></pre>
+<pre><code>##        r    theta 
+## 7.743437 1.185139</code></pre>
+<p> </p>
+</div>
+<div id="question-4" class="section level3">
+<h3>Question 4:</h3>
+<pre class="r"><code>queue &lt;- c(&quot;sheep&quot;, &quot;fox&quot;, &quot;owl&quot;, &quot;ant&quot;)
+print(queue)</code></pre>
+<pre><code>## [1] &quot;sheep&quot; &quot;fox&quot;   &quot;owl&quot;   &quot;ant&quot;</code></pre>
+<pre class="r"><code>##a
+queue = c(queue, &quot;serpent&quot;)
+#print(queue)
+
+## b
+queue = queue[-1]
+#print(queue)
+
+## c
+queue = c(&quot;donkey&quot;, queue)
+#print(queue)
+
+## d
+queue = queue[-length(queue)]
+#print(queue)
+
+## e
+queue = queue[-3]
+#print(queue)
+
+## f
+queue = c(queue[-length(queue)], &quot;aphid&quot;, queue[length(queue)])
+#print(queue)
+
+## g
+queue[3]</code></pre>
+<pre><code>## [1] &quot;aphid&quot;</code></pre>
+<p> </p>
+<p>##3 Question 5:</p>
+<pre class="r"><code>q5 &lt;- seq(1,100)
+
+q5.a = q5[!(q5 %% 2 == 0 | q5 %% 3 == 0 | q5 %% 7 == 0)]
+print(q5.a)</code></pre>
+<pre><code>##  [1]  1  5 11 13 17 19 23 25 29 31 37 41 43 47 53 55 59 61 65 67 71 73 79 83 85
+## [26] 89 95 97</code></pre>
 </div>
 
 

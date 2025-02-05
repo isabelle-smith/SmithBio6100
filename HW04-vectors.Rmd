@@ -1,0 +1,134 @@
+---
+title: "Homework 4"
+author: "Isabelle Smith"
+date: "2025-02-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+  
+&nbsp;
+
+### Question 1:  
+
+```{r 1}
+
+x = 1.1
+a = 2.2
+b = 3.3
+
+## a
+z = x^(a^b)
+print(z)
+
+## b
+z = (x^a)^b
+print(z)
+
+## c
+z = 3*x^3 + 2*x^2 +1
+print(z)
+
+```
+  
+&nbsp;
+
+### Question 2:  
+
+```{r 2}
+
+## a
+a1 = seq(1,8,1)
+a2 = seq(7,1,-1)
+
+a3 = c(a1,a2)
+print(a3)
+
+## b
+b1 = seq(1,5,1)
+
+b2 = rep(b1, times=b1)
+print(b2)
+
+## c
+c1 = seq(5,1,-1)
+c2 = rep(c1, times=b1)
+print(c2)
+
+```
+  
+&nbsp;
+
+### Question 3:  
+
+```{r 3}
+
+set.seed(77)
+
+q3_cartesian = runif(2, min=0,max=10)
+names(q3_cartesian) <- c("x","y")
+print(q3_cartesian)
+
+r = sqrt(sum(q3_cartesian^2))
+theta = atan(as.numeric(q3_cartesian["y"] / q3_cartesian["x"]))
+
+q3_polar = c(r, theta)
+names(q3_polar) <- c("r", "theta")
+print(q3_polar)
+
+```
+  
+&nbsp;
+
+### Question 4:  
+
+```{r 4}
+
+queue <- c("sheep", "fox", "owl", "ant")
+print(queue)
+
+##a
+queue = c(queue, "serpent")
+#print(queue)
+
+## b
+queue = queue[-1]
+#print(queue)
+
+## c
+queue = c("donkey", queue)
+#print(queue)
+
+## d
+queue = queue[-length(queue)]
+#print(queue)
+
+## e
+queue = queue[-3]
+#print(queue)
+
+## f
+queue = c(queue[-length(queue)], "aphid", queue[length(queue)])
+#print(queue)
+
+## g
+queue[3]
+
+```
+  
+&nbsp;
+
+##3 Question 5:  
+
+```{r 5}
+
+q5 <- seq(1,100)
+
+q5.a = q5[!(q5 %% 2 == 0 | q5 %% 3 == 0 | q5 %% 7 == 0)]
+print(q5.a)
+
+```
+
+
