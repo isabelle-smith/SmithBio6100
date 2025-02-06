@@ -2,6 +2,8 @@
 title: "Home"
 ---
 
+<div class="home-page">
+
 #### Webpage Sources:  
 
 - https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html  
@@ -27,3 +29,5 @@ title: "Home"
 - Turn Off Scientific Notation in R: `options(scipen=999)`
 - Change Git Commit Message: `git commit --amend`
 - Regex Tester: https://regexr.com/
+
+</div>
