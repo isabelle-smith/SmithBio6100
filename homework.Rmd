@@ -11,11 +11,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <div class="hw-page">  
 
-| Week                             | Description                    |
-|:--------------------------------:|--------------------------------|
-| [Week 1](HW01-default-text.pdf)  | knit default `.rmd` to `.pdf`  |
-| [Week 2](about.html)             | build (this) website           |
-| [Week 3](HW03-regex.html)        | regex puzzles                  |
-| [Week 4](HW04-vectors.html)      | vectors                        |
+| Week                                           | Description                       |
+|:----------------------------------------------:|-----------------------------------|
+| [Week 1](HW01-default-text.pdf)                | knit default `.rmd` to `.pdf`     |
+| [Week 2](about.html)                           | build (this) website              |
+| [Week 3](HW03-regex.html)                      | regex puzzles                     |
+| [Week 4](HW04-vectors.html)                    | vectors                           |
+| [Week 5](HW05-matrices-lists-data-frames.html) | working with matrices/lists/dfs   |
 
 </div>

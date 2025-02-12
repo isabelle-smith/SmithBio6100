@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Isabelle Smith" />
 
+<meta name="date" content="2025-02-12" />
 
-<title>Homework</title>
+<title>Homework 5</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -279,50 +281,205 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Homework</h1>
+<h1 class="title toc-ignore">Homework 5</h1>
+<h4 class="author">Isabelle Smith</h4>
+<h4 class="date">2025-02-12</h4>
 
 </div>
 
 
-<div id="spring-2025" class="section level4">
-<h4>Spring 2025</h4>
-<div class="hw-page">
-<table>
-<colgroup>
-<col width="57%" />
-<col width="42%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Week</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><a href="HW01-default-text.pdf">Week 1</a></td>
-<td>knit default <code>.rmd</code> to <code>.pdf</code></td>
-</tr>
-<tr class="even">
-<td align="center"><a href="about.html">Week 2</a></td>
-<td>build (this) website</td>
-</tr>
-<tr class="odd">
-<td align="center"><a href="HW03-regex.html">Week 3</a></td>
-<td>regex puzzles</td>
-</tr>
-<tr class="even">
-<td align="center"><a href="HW04-vectors.html">Week 4</a></td>
-<td>vectors</td>
-</tr>
-<tr class="odd">
-<td align="center"><a href="HW05-matrices-lists-data-frames.html">Week
-5</a></td>
-<td>working with matrices/lists/dfs</td>
-</tr>
-</tbody>
-</table>
+<p> </p>
+<div id="question-1" class="section level3">
+<h3>Question 1</h3>
+<pre class="r"><code>set.seed(7)
+
+# Assign to the variable n_dims a single random integer between 3 and 10.
+n_dims &lt;- sample(3:10,1)
+
+
+# Create a vector of consecutive integers from 1 to n_dims^2.
+vec &lt;- 1:(n_dims^2)
+
+
+# Use the sample function to randomly reshuffle these values.
+vec2 &lt;- sample(vec, length(vec), replace=FALSE)
+
+
+# create a square matrix with these elements.
+mat &lt;- matrix(vec2, nrow=n_dims, byrow=TRUE)
+
+
+# print out the matrix.
+print(mat)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    3   15   12    7
+## [2,]    2   10    6    8
+## [3,]    9   16   11   13
+## [4,]   14    5    4    1</code></pre>
+<pre class="r"><code># find a function in r to transpose the matrix.
+mat_t &lt;- t(mat)
+
+
+# print it out again and note how it has changed.
+print(mat_t)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    3    2    9   14
+## [2,]   15   10   16    5
+## [3,]   12    6   11    4
+## [4,]    7    8   13    1</code></pre>
+<pre class="r"><code># calculate the sum and the mean of the elements in the first row and then the last row.
+sum(mat_t[,1])</code></pre>
+<pre><code>## [1] 37</code></pre>
+<pre class="r"><code>mean(mat_t[,1])</code></pre>
+<pre><code>## [1] 9.25</code></pre>
+<pre class="r"><code>sum(mat_t[,n_dims])</code></pre>
+<pre><code>## [1] 24</code></pre>
+<pre class="r"><code>mean(mat_t[,n_dims])</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="r"><code># read about the eigen() function and use it on your matrix
+##?eigen()
+mat_t_e &lt;- eigen(mat_t)
+
+
+# look carefully at the elements of $values and $vectors in the output. What kind of numbers are these?
+mat_t_e$values</code></pre>
+<pre><code>## [1] 33.214288+0.000000i -4.459531+5.677169i -4.459531-5.677169i
+## [4]  0.704774+0.000000i</code></pre>
+<pre class="r"><code>mat_t_e$vectors</code></pre>
+<pre><code>##               [,1]                  [,2]                  [,3]           [,4]
+## [1,] -0.3856510+0i  0.7263887+0.0000000i  0.7263887+0.0000000i  0.07464911+0i
+## [2,] -0.6650280+0i -0.3336523-0.0462810i -0.3336523+0.0462810i -0.84690318+0i
+## [3,] -0.4666863+0i -0.3215908-0.2135864i -0.3215908+0.2135864i  0.48559513+0i
+## [4,] -0.4372812+0i -0.1326356+0.4384765i -0.1326356-0.4384765i -0.20342046+0i</code></pre>
+<pre class="r"><code>                ## they are imaginary/complex numbers
+
+
+# dig in with the typeof() function to figure out their type.
+typeof(mat_t_e$values)</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<pre class="r"><code>typeof(mat_t_e$vectors)</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<pre class="r"><code># if have set your code up properly, you should be able to re-run it and create a matrix of different size because n_dims will change.</code></pre>
+<p> </p>
 </div>
+<div id="question-2" class="section level3">
+<h3>Question 2</h3>
+<pre class="r"><code># Create a list with the following named elements:
+# my_matrix, which is a 4 x 4 matrix filled with random uniform values
+# my_logical which is a 100-element vector of TRUE or FALSE values. Do this efficiently by setting up a vector of random values and then applying an inequality to it.
+# my_letters, which is a 26-element vector of all the lower-case letters in random order.
+
+my_matrix &lt;- matrix(runif(4^2), nrow=4, byrow=TRUE)
+
+my_logical &lt;- rpois(100,7) &lt; 7
+
+my_letters &lt;- sample(letters, 26, replace=FALSE)
+
+list1 &lt;- list(my_matrix, my_logical, my_letters)
+
+
+# Then, complete the following steps:
+# create a new list, which has the element[2,2] from the matrix, the second element of the logical vector, and the second element of the letters vector.
+# use the typeof() function to confirm the underlying data types of each component in this list
+# combine the underlying elements from the new list into a single atomic vector with the c() function.
+# what is the data type of this vector?
+
+list2 &lt;- list(list1[[1]][2,2], list1[[2]][2], list1[[3]][2])
+
+typeof(list2[[1]])</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code>typeof(list2[[2]])</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code>typeof(list2[[3]])</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>vec1 &lt;- c(list2[[1]], list2[[2]], list2[[3]])
+
+typeof(vec1)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>            ## it&#39;s a character vector</code></pre>
+<p> </p>
+</div>
+<div id="question-3" class="section level3">
+<h3>Question 3</h3>
+<pre class="r"><code># Create a data frame with the two variables (= columns) and 26 cases (= rows) below:
+# call the first variable my_unis and fill it with 26 random uniform values from 0 to 10
+# call the second variable my_letters and fill it with 26 capital letters in random order.
+
+# for the first variable, use a single line of code in R to select 4 random rows and replace the numerical values in those rows with NA.
+# for the first variable, write a single line of R code to identify which rows have the missing values.
+
+# re-order the entire data frame to arrange the second variable in alphabetical order
+
+# calculate the column mean for the first variable.
+
+df &lt;- data.frame(my_unis = runif(26,min=0,max=10),
+                 my_letters = sample(LETTERS, 26, replace=FALSE))
+df</code></pre>
+<pre><code>##      my_unis my_letters
+## 1  3.6464558          L
+## 2  7.3161996          N
+## 3  3.8033252          K
+## 4  7.1483127          I
+## 5  0.3705825          H
+## 6  4.9855914          A
+## 7  7.2149037          X
+## 8  9.7851800          J
+## 9  9.4905870          R
+## 10 2.9609209          Z
+## 11 2.5932639          C
+## 12 9.2397398          V
+## 13 7.3203924          E
+## 14 7.3972332          B
+## 15 5.9343637          G
+## 16 0.8026144          M
+## 17 8.0136332          U
+## 18 2.6115888          Q
+## 19 2.8310378          T
+## 20 7.1415709          Y
+## 21 8.6821505          S
+## 22 7.0132305          D
+## 23 0.6178004          W
+## 24 4.3741093          P
+## 25 3.3064823          O
+## 26 9.0420513          F</code></pre>
+<pre class="r"><code>df$my_unis[sample(1:26,4,replace=FALSE)] &lt;- NA
+df[is.na(df$my_unis),]</code></pre>
+<pre><code>##    my_unis my_letters
+## 2       NA          N
+## 11      NA          C
+## 15      NA          G
+## 23      NA          W</code></pre>
+<pre class="r"><code>df2 &lt;- df[order(df$my_letters),]
+df2</code></pre>
+<pre><code>##      my_unis my_letters
+## 6  4.9855914          A
+## 14 7.3972332          B
+## 11        NA          C
+## 22 7.0132305          D
+## 13 7.3203924          E
+## 26 9.0420513          F
+## 15        NA          G
+## 5  0.3705825          H
+## 4  7.1483127          I
+## 8  9.7851800          J
+## 3  3.8033252          K
+## 1  3.6464558          L
+## 16 0.8026144          M
+## 2         NA          N
+## 25 3.3064823          O
+## 24 4.3741093          P
+## 18 2.6115888          Q
+## 9  9.4905870          R
+## 21 8.6821505          S
+## 19 2.8310378          T
+## 17 8.0136332          U
+## 12 9.2397398          V
+## 23        NA          W
+## 7  7.2149037          X
+## 20 7.1415709          Y
+## 10 2.9609209          Z</code></pre>
+<pre class="r"><code>mean(df$my_unis, na.rm=TRUE)</code></pre>
+<pre><code>## [1] 5.780986</code></pre>
 </div>
 
 
