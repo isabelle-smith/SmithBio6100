@@ -97,3 +97,14 @@ fitLinear2(myPars)
 
 ## - - - - - - -
 
+
+
+## Using do.call To Pass A List Of Parameters To A Function
+## - - - - - - -
+z <- c(runif(99),NA)
+mean(z) # oops, mean doesn't work if there is an NA
+mean(x=z,na.rm=TRUE) # change the default value for na.rm
+mean(x=z,na.rm=TRUE,trim=0.05) # check out the "trim" option in help
+l <- list(x=z,na.rm=TRUE,trim=0.05) # bundle paramaters as a list
+do.call(mean,l) # use the do.call function with the function name and the parameter list
+## - - - - - - -
