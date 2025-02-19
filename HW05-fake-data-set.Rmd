@@ -24,7 +24,7 @@ I am looking at sleep (and other health metrics) broken out by major (and other 
 
 **To start simply, assume that the data in each of your treatment groups follow a normal distribution. Specify the sample sizes, means, and variances for each group that would be reasonable if your hypothesis were true. You may need to consult some previous literature and/or an expert in the field to come up with these numbers.**  
 
-I will look at three majors (easy, medium, hard) and total hours of sleep:  
+I will look at three majors (easy, medium, hard) and total sleep time (in hours):  
 
 - $\mbox{sleep}_E \sim \mbox{N} (9,0.5)$ and $n_E = 30$  
 - $\mbox{sleep}_M \sim \mbox{N} (8,0.5)$ and $n_M = 50$  
@@ -96,6 +96,8 @@ ggplot(df, aes(x=major, y=sleep)) +
 
 ```
 
+Using an ANOVA, we find a significant difference in mean amount of sleep by major in our generated data. This difference is highlighted in the boxplots, as there is no overlap between the IQRs of any groups.  
+
 
 &nbsp;
 
@@ -158,6 +160,8 @@ for (i in 1:5){
 }
 
 ```
+
+Repeating this process multiple times with the same parameters, we get different p-values (but all significant and very small).  
 
 
 &nbsp;
@@ -238,7 +242,7 @@ for (i in 1:5){
 
 ```
 
-
+The original difference of 1 between groups was significant at all tested sample sizes in the previous results, so I used the smallest value (factor of 1). Using this, 4/5 different data sets with the same creation parameters were found to have significant difference in group means via ANOVA.  
 
 
 &nbsp;
@@ -246,10 +250,6 @@ for (i in 1:5){
 ## Question 8
 
 **Write up your results in a markdown file, organized with headers and different code chunks to show your analysis. Be explicit in your explanation and justification for sample sizes, means, and variances.**  
-
-```{r q8}
-
-```
 
 &nbsp;
 

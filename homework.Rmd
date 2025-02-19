@@ -18,5 +18,6 @@ knitr::opts_chunk$set(echo = TRUE)
 | [Week 3](HW03-regex.html)                      | regex puzzles                     |
 | [Week 4](HW04-vectors.html)                    | vectors                           |
 | [Week 5](HW05-matrices-lists-data-frames.html) | working with matrices/lists/dfs   |
+| [Week 6](HW05-fake-data-set.html)              | generating & testing a data set   |
 
 </div>
