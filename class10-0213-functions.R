@@ -1,7 +1,7 @@
 
-## BIOL6100 - Class 13
+## BIOL6100 - Class 10
 ## Isabelle Smith
-## Feb. 12, 2025
+## Feb. 13, 2025
 
 ## - - - - - - -
 
