@@ -20,6 +20,7 @@ title: "Home"
 - https://bookdown.org/yihui/rmarkdown-cookbook/favicon.html  
 - https://stackoverflow.com/a/19316337  
 - https://stackoverflow.com/a/635863  
+- https://ggplot2.tidyverse.org/reference/theme.html  
 
 &nbsp;
 
