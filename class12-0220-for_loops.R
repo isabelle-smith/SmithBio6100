@@ -9,6 +9,8 @@
 
 ## - - - - - - -
 
+
+
 ## ADDED
 ## - - - - - - -
 
@@ -31,4 +33,17 @@ for (i in seq_along(z)) {
   print(i)
 }
 
+
+# Another method, probably faster (why?)
+z <- 1:20
+zsub <- z[z %% 2!=0] # contrast with logical expression in previous if statement!
+length(zsub)    ## CHANGED
+print(zsub)     ## ADDED
+
+
+for (i in seq_along(zsub)) {
+  cat("i = ",i,"zsub[i] = ",zsub[i],"\n")
+}
+
 ## - - - - - - -
+
