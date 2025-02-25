@@ -139,3 +139,51 @@ print(model_frame)
 
 
 
+
+
+## Parameter sweeping redux with ggplot graphics
+## - - - - - - -
+
+library(ggplot2)
+
+area <- 1:5 #keep this very small initially
+c_pars <- c(100,150,175)
+z_pars <- c(0.10, 0.16, 0.26, 0.3)
+
+# set up model frame
+model_frame <- expand.grid(c=c_pars,z=z_pars,A=area)
+model_frame$S <- NA
+
+
+# loop through the parameters and fill with SA function
+
+for (i in 1:length(c_pars)) {
+  for (j in 1:length(z_pars)) {
+    model_frame[model_frame$c==c_pars[i] & model_frame$z==z_pars[j],"S"] <-   species_area_curve(A=area,c=c_pars[i],z=z_pars[j])
+  }
+}
+
+
+for (i in 1:nrow(model_frame)) {
+  model_frame[i,"S"] <- species_area_curve(A=model_frame$A[i],
+                                           c=model_frame$c[i],
+                                           z=model_frame$z[i])
+}
+
+head(model_frame)         ## ADDED
+
+
+library(ggplot2)
+
+p1 <- ggplot(model_frame)
+p1 + geom_line(mapping=aes(x=A,y=S)) +
+  facet_grid(c~z)
+
+
+p2 <- p1
+p2 + geom_line(mapping=aes(x=A,y=S,group=z)) +
+  facet_grid(.~c)
+
+## - - - - - - -
+
+
