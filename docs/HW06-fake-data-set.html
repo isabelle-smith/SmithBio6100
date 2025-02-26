@@ -347,7 +347,7 @@ df &lt;- data.frame(major=factor(major, levels=c(&quot;E&quot;,&quot;M&quot;,&qu
 str(df)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    100 obs. of  2 variables:
 ##  $ major: Factor w/ 3 levels &quot;E&quot;,&quot;M&quot;,&quot;H&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ sleep: num  9.55 9.32 9.52 9.08 9.57 ...</code></pre>
+##  $ sleep: num  9.15 8.22 9.78 9.34 8.91 ...</code></pre>
 <p> </p>
 </div>
 <div id="question-4" class="section level2">
@@ -363,8 +363,8 @@ anova(mod)</code></pre>
 ## 
 ## Response: sleep
 ##           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-## major      2 57.517 28.7586  93.005 &lt; 2.2e-16 ***
-## Residuals 97 29.994  0.3092                      
+## major      2 53.896 26.9480  111.64 &lt; 2.2e-16 ***
+## Residuals 97 23.414  0.2414                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>## - - - - - - -
@@ -390,7 +390,7 @@ library(ggplot2)</code></pre>
         axis.title.y=element_text(vjust=5),
         plot.margin=margin(1, 1, 1, 1, &quot;cm&quot;),
         legend.position=&quot;none&quot;)</code></pre>
-<p><img src="HW05-fake-data-set_files/figure-html/q4-1.png" width="672" /></p>
+<p><img src="HW06-fake-data-set_files/figure-html/q4-1.png" width="672" /></p>
 <p>Using an ANOVA, we find a significant difference in mean amount of
 sleep by major in our generated data. This difference is highlighted in
 the boxplots, as there is no overlap between the IQRs of any groups.</p>
@@ -520,7 +520,7 @@ ggplot(results, aes(x=effect.size, y=pvalues, color=significant)) +
          axis.title.y=element_text(vjust=5),
          plot.margin=margin(1, 1, 1, 1, &quot;cm&quot;),
          legend.position=&quot;top&quot;)</code></pre>
-<p><img src="HW05-fake-data-set_files/figure-html/q6-1.png" width="672" /></p>
+<p><img src="HW06-fake-data-set_files/figure-html/q6-1.png" width="672" /></p>
 <p>Keeping an equal variance of 0.5: for a small sample size (factor of
 1 means n=10), a difference of 0.75 between groups is needed to detect a
 significant difference. For medium sample sizes (n=20 and 50), a lower
