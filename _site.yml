@@ -17,3 +17,4 @@ output:
     css: custom.css
     includes:
       in_header: header.html
+      after_body: footer.html

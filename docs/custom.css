@@ -80,6 +80,18 @@ div.navbar-collapse ul li:nth-last-child(-n+1){
 }
 
 
+/* FOOTER @  @  @  @  @  @  @ */
+
+div.footer p{
+  background-color: white;
+  border: var(--border);
+  border-radius: 2em;
+  color: var(--dark-color);
+  padding: 1em;
+  width: fit-content;
+  
+}
+
 /* wide nav! ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~  ~~ */
 
 @media (min-width: 768px) {
@@ -136,6 +148,13 @@ div.navbar-collapse ul li:nth-last-child(-n+1){
     div.navbar-collapse ul li:nth-child(even){
         border: none;
     }
+    
+    /* FOOTER @  @  @  @  @  @  @ */
+    
+    div.footer p{
+      color: black;
+      background-color: royalblue;
+    }
 }
 
 
@@ -188,7 +207,7 @@ div.hw-page table tbody tr > *:nth-child(1){
     text-align:center;
 }
 
-/* Tables # # # # # # # */
+/* Tables # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # */
 
 table{
     border: var(--border);
@@ -211,4 +230,17 @@ table{
 
 .table>caption+thead>tr:first-child>td:last-child, .table>caption+thead>tr:first-child>th:last-child, .table>colgroup+thead>tr:first-child>td:last-child, .table>colgroup+thead>tr:first-child>th:last-child, .table>thead:first-child>tr:first-child>td:last-child, .table>thead:first-child>tr:first-child>th:last-child{
     border-radius: 0 2em 0 0;
+}
+
+/* FOOTER @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @  @ */
+
+div.footer{
+  border-top: var(--border);
+  background-color: var(--bg-color);
+  margin-top: 5em;
+  padding: 1em;
+  /* position */
+  width: 100%;
+  position: absolute;
+  left: 0;
 }
