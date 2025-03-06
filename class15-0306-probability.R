@@ -56,6 +56,15 @@ library(MASS)
 # Parameter lambda > 0
 
 
+## NOTE: "zero-inflated poisson"
+## has an additional process
+## generating zeroes (see ifelse())
+
+
+## ALSO: "zero-censored poisson"
+## occurs when zeros are not recorded
+
+
 # "d" function generates probability density
 hits <- 0:10
 myVec <- dpois(x=hits,lambda=1)
@@ -127,4 +136,61 @@ quantile(x=ranPois,probs=c(0.025,0.975))
 
 ## - - - - - - -
 
+
+
+
+
+## Binomial distribution
+## - - - - - - -
+
+#-------------------------------------------------
+# Binomial distribution
+# p = probability of a dichotomous outcome
+# size = number of trials
+# x = possible outcomes
+# outcome x is bounded between 0 and number of trials
+
+# use "d" binom for density function
+hits <- 0:10
+myVec <- dbinom(x=hits,size=10,prob=0.5)
+plot(myVec, type="b")
+
+
+myCoins <- rbinom(n=50,size=100,prob=0.5)
+my_histo(myCoins)
+
+
+myCoins <- rbinom(n=500,size=100,prob=0.5)
+my_histo(myCoins)
+quantile(x=myCoins,probs=c(0.025,0.975))
+
+## - - - - - - -
+
+
+
+
+
+## Negative Binomial distribution
+## - - - - - - -
+
+#-------------------------------------------------
+# negative binomial: number of failures (values of MyVec)
+# in a series of (Bernouli) with p=probability of success 
+# before a target number of successes (= size)
+# generates a discrete distribution that is more 
+# heterogeneous ("overdispersed") than Poisson
+
+
+hits <- 0:40
+myVec <- dnbinom(x=hits, size=5, prob=0.5)
+plot(myVec, type="b")
+
+
+# geometric series is a special case where N= 1 success
+# each bar is a constant fraction 1 - "prob" of the bar before it
+myVec <- dnbinom(x=hits, size=1, prob=0.1)
+plot(myVec, type="b")
+
+
+## ...
 
