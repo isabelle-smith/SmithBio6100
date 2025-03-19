@@ -237,7 +237,7 @@ table{
 div.footer{
   border-top: var(--border);
   background-color: var(--bg-color);
-  margin-top: 5em;
+  margin-top: 3em;
   padding: 1em;
   /* position */
   width: 100%;

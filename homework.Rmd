@@ -20,6 +20,6 @@ knitr::opts_chunk$set(echo = TRUE)
 | [Week 5](HW05-matrices-lists-data-frames.html) | working with matrices/lists/dfs   |
 | [Week 6](HW06-fake-data-set.html)              | generating & testing a data set   |
 | [Week 7](HW07-dplyr.html)                      | using the `dplyr` package         |
-| [Week 8](HW08-probability.html)                | ???         |
+| [Week 8](HW08-probability.html)                | MLEs & PDFs                       |
 
 </div>

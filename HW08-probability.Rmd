@@ -38,6 +38,7 @@ See [original](HW08-probability-orig.Rmd).
 
 ---
 
+
 ### 2. Try it with your own data.  
 
 **Once the code is in and runs, try running this analysis on your own data (or data from your lab, or data from a published paper; if you're stumped, check out publicly available data sets on [Dryad](https://datadryad.org/search), [ESA](https://data.esa.org), or the [LTER Network](https://lternet.edu/)).**
@@ -48,9 +49,7 @@ See [original](HW08-probability-orig.Rmd).
 
 Using weight from `chickwts` data.
 
-> Chicken Weights by Feed Type  
-
-> An experiment was conducted to measure and compare the effectiveness of various feed supplements on the growth rate of chickens.  
+*Chicken Weights by Feed Type: An experiment was conducted to measure and compare the effectiveness of various feed supplements on the growth rate of chickens.*  
 
 ```{r data}
 
@@ -64,6 +63,8 @@ summary(df$x)
 &nbsp;
 
 #### Plot original data
+
+&nbsp;
 
 ##### Plot histogram of data
 
@@ -89,6 +90,8 @@ print(p2)
 &nbsp;
 
 #### MLE & PDF
+
+&nbsp;
 
 ##### Plot `normal` probability density
 
@@ -179,6 +182,7 @@ pSpecial + statSpecial
 
 ---
 
+
 ### 3. Find best-fitting distribution.  
 
 **Take a look at the second-to-last graph which shows the histogram of your data and 4 probability density curves (normal, uniform, exponential, gamma) that are fit to the data. Find the best-fitting distribution for your data. For most data sets, the gamma will probably fit best, but if you data set is small, it may be very hard to see much of a difference between the curves. The `beta` distribution in the final graph is somewhat special. It often fits the data pretty well, but that is because we have assumed the largest data point is the true upper bound, and everything is scaled to that. The fit of the uniform distribution also fixes the upper bound. The other curves (normal, exponential, and gamma) are more realistic because they do not have an upper bound.**  
@@ -194,6 +198,7 @@ p2 + stat1 + stat2 + stat3 + stat4
 
 ---
 
+
 ### 4. Simulate a new data set.  
 
 **Using the best-fitting distribution, go back to the code and get the maximum likelihood parameters. Use those to simulate a new data set, with the same length as your original vector, and plot that in a histogram and add the probability density curve. Right below that, generate a fresh histogram plot of the original data, and also include the probability density curve.**  
@@ -208,9 +213,9 @@ p2 + stat1 + stat2 + stat3 + stat4
 
 set.seed(0)
 
+new_df <- data.frame(new_x = rnorm(n=length(df$x), mean=meanML, sd=sdML))
 
 new_range <- range(new_df$new_x)[2] - range(new_df$new_x)[1]
-new_df <- data.frame(new_x = rnorm(n=length(df$x), mean=meanML, sd=sdML))
 
 new_p <- ggplot(data=new_df, aes(x=new_x, y=after_stat(density))) +
   geom_histogram(color="grey60",fill="goldenrod1",size=0.2, binwidth=10) +
@@ -218,11 +223,11 @@ new_p <- ggplot(data=new_df, aes(x=new_x, y=after_stat(density))) +
   scale_y_continuous(limits=c(0,0.0125)) +
   labs(title="Simulated Data")
 
-old_range <- range(df$x)[2] - range(df$x)[1]
-
 old_p <- p2 +
   scale_y_continuous(limits=c(0,0.0125)) +
   labs(title="Original Data")
+
+old_range <- range(df$x)[2] - range(df$x)[1]
 
 
 cowplot::plot_grid(new_p, old_p, axis="b",
