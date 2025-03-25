@@ -1,0 +1,42 @@
+logfile: 140130-logfile.txt
+#######################
+R version: R version 4.3.2 (2023-10-31 ucrt)
+platform: x86_64-w64-mingw32/x64 (64-bit)
+running: Windows 11 x64 (build 26100)
+#----------------------
+random number seed: -299293341
+timestamp: Tue Mar 25 14:01:30 2025
+#----------------------
+libraries loaded:
+devtools pracma pryr upscaler usethis
+#######################
+INFO  [25-Mar 14:01:46] memory_used=125MB; i=1
+INFO  [25-Mar 14:01:46] memory_used=125MB; i=2
+INFO  [25-Mar 14:01:46] memory_used=125MB; i=3
+INFO  [25-Mar 14:01:46] memory_used=125MB; i=4
+INFO  [25-Mar 14:01:46] memory_used=125MB; i=5
+INFO  [25-Mar 14:01:47] memory_used=126MB; i=6
+INFO  [25-Mar 14:01:47] memory_used=133MB; i=7
+INFO  [25-Mar 14:01:47] memory_used=205MB; i=8
+INFO  [25-Mar 14:01:48] memory_used=925MB; i=9
+INFO  [25-Mar 14:02:03] memory_used=8125MB; i=10
+.
+INFO  [25-Mar 14:02:36] memory_used=8125MB; i=1
+.
+INFO  [25-Mar 14:02:36] memory_used=125MB; i=2
+.
+INFO  [25-Mar 14:02:36] memory_used=125MB; i=3
+.
+INFO  [25-Mar 14:02:37] memory_used=125MB; i=4
+.
+INFO  [25-Mar 14:02:37] memory_used=125MB; i=5
+.
+INFO  [25-Mar 14:02:37] memory_used=126MB; i=6
+.
+INFO  [25-Mar 14:02:37] memory_used=133MB; i=7
+.
+INFO  [25-Mar 14:02:37] memory_used=205MB; i=8
+.
+INFO  [25-Mar 14:02:38] memory_used=925MB; i=9
+.
+INFO  [25-Mar 14:02:48] memory_used=8125MB; i=10
