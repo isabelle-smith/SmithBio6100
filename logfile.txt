@@ -1,0 +1,12 @@
+logfile: logfile.txt
+#######################
+R version: R version 4.3.2 (2023-10-31 ucrt)
+platform: x86_64-w64-mingw32/x64 (64-bit)
+running: Windows 11 x64 (build 26100)
+#----------------------
+random number seed: 100
+timestamp: Tue Mar 25 13:31:26 2025
+#----------------------
+libraries loaded:
+devtools pracma pryr upscaler usethis
+#######################
