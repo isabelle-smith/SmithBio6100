@@ -1,0 +1,149 @@
+---
+title: "Homework 9"
+author: "Isabelle Smith"
+date: "2025-03-26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+&nbsp;
+
+## Strategic Coding Practices
+
+```{r}
+
+library(upscaler)
+
+add_folder()
+
+```
+
+&nbsp;
+
+### 1
+
+**To start, go to this link and scroll down to “Download Data”. From there, Sort by Site to download the “BART” site dataset for years 2013-2023. In this compressed folder, you should see a list of six folders organized by year in the file name. Store that for now somewhere on your desktop.**
+
+> https://data.neonscience.org/data-products/DP1.10003.001  
+
+BART: January 2015 - December 2023
+
+&nbsp;
+
+### 2
+
+**Within each year’s folder, you will only be using a file from each year labeled “countdata” in its title. Using for loops, iterate through each year’s folders to gather the file names of these “countdata” .csv files.**
+
+```{r}
+
+years <- 2023-2015+1
+
+directory <- "NEON_count-landbird"
+subfolders <- list.files(directory)
+startstring <- "NEON.D01.BART.DP1.10003.001.brd_countdata"
+
+filenames <- vector(length=years)
+filepaths <- vector(length=years)
+
+for (i in 1:years){
+  
+  #year <- 2015+i-1
+  
+  folder <- subfolders[i]
+  
+  files <- list.files(paste0(directory, "/", folder))
+  
+  name <- files[startsWith(files, startstring)]
+  
+  filenames[i] <- name
+  
+  filepaths[i] <- paste0(directory, "/", folder, "/", name)
+  
+}
+
+print(filenames)
+
+```
+
+&nbsp;
+
+### 3
+
+**Starting with pseudo-code, generate functions for 1) Cleaning the data for any empty/missing cases, 2) Extract the year from each file name, 3) Calculate Abundance for each year (Total number of individuals found), 4) Calculate Species Richness for each year(Number of unique species found), 5) Run a simple regression model for Species Richness (S) vs. Abundance for every year, 6) Generate histograms for both Abundance and Species Richness (S) and store the plots**
+
+```{r}
+
+functions <- vector(length=6)
+
+## - - - - - - -
+
+## 1) Cleaning the data for any empty/missing cases
+functions[1] <- "clean_data"
+
+## 2) Extract the year from each file name
+functions[2] <- "extract_year"
+
+## 3) Calculate Abundance for each year (Total number of individuals found)
+functions[3] <- "calc_abundance"
+
+## 4) Calculate Species Richness for each year(Number of unique species found)
+functions[4] <- "calc_richness"
+
+## 5) Run a simple regression model for Species Richness (S) vs. Abundance for every year
+functions[5] <- "run_regression"
+
+## 6) Generate histograms for both Abundance and Species Richness (S) and store the plots
+functions[6] <- "make_histograms"
+
+## - - - - - - -
+
+build_function(functions)
+
+## - - - - - - -
+
+fxs <- list.files("Functions")
+
+for (i in 1:lenght(fxs)){
+  
+  source(fxs[i])
+  
+}
+
+```
+
+&nbsp;
+
+### 4
+
+**Create an initial empty data frame to hold the above summary statistics-you should have columns for the file name, one for abundance, one for species richness, one for year, and the regression model summary statistics.**
+
+```{r}
+
+. <- rep(NA, years)
+
+stats <- data.frame(filename=.,
+                    abundance=.,
+                    richness=.,
+                    year=.)
+
+regression <- data.frame(estimate=c(NA,NA),
+                         std.err=c(NA,NA),
+                         t.value=c(NA,NA),
+                         p.value=c(NA,NA))
+
+```
+
+&nbsp;
+
+### 5
+
+**Using a for loop, run your created functions as a batch process for each folder, changing the working directory as necessary to read in the correct files, calculating summary statistics with your created functions, and then writing them out into your summary statistics data frame.**
+
+```{r}
+
+```
+
