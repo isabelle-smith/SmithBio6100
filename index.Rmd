@@ -27,6 +27,7 @@ title: "Home"
 #### Miscellaneous:  
 
 - Beamer Template for PowerPoint: https://github.com/sbryngelson/Fake-Beamer
+- Website Set-Up: `rmarkdown:::site_skeleton(getwd())`
 - Turn Off Scientific Notation in R: `options(scipen=999)`
 - Change Git Commit Message: `git commit --amend`
 - Regex Tester: https://regexr.com/
