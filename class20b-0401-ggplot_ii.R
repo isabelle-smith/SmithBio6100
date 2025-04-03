@@ -1,5 +1,5 @@
 
-## BIOL6100 - Class 20b
+## BIOL6100 - Class 20 (part 2)
 ## Isabelle Smith
 ## Apr. 1, 2025
 
