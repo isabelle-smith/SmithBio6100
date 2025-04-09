@@ -1,0 +1,160 @@
+---
+title: "Homework 10"
+author: "Isabelle Smith"
+date: "2025-04-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+&nbsp;
+
+## Libraries
+
+```{r, message=FALSE}
+
+library(tidyverse)
+##install.packages("tidytuesdayR")
+
+```
+
+&nbsp;
+
+
+
+## Work
+
+Use your newly-developed `ggplot` chops to create some nice graphs from a dataset from the (TidyTuesday Dataset)[https://github.com/rfordatascience/tidytuesday] project. You can make any combination of four plots from the list below:  
+
+- Beeswarm Plot
+- Ridgeline Plot
+- Pie Charts
+- Mosaic Plot
+- Scatter Pie Plot
+- Waffle Plot
+- Tree Map
+- 2-D Density Plot
+- Dendrogram
+
+
+
+&nbsp;
+
+### Data
+
+I chose the (Palm Trees)[https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-03-18/readme.md] dataset.
+
+```{r, message=FALSE}
+
+tuesdata <- tidytuesdayR::tt_load(2025, week = 11)
+palmtrees0 <- tuesdata$palmtrees
+
+
+palmtrees <- palmtrees0 |>
+  select(spec_name, acc_genus, palm_tribe, palm_subfamily,
+         climbing, erect, max_stem_height_m, max_stem_dia_cm,
+         average_fruit_length_cm, average_fruit_width_cm,
+         fruit_size_categorical, fruit_shape, conspicuousness) |>
+  drop_na() |>
+  rename(fruit_conspic=conspicuousness)
+
+```
+
+```{r}
+
+palmtrees |>
+  select(where(is.numeric)) |>
+  summary()
+
+palmtrees |>
+  select(!where(is.numeric)) |>
+  mutate(across(everything(), function(x) length(unique(x)))) |>
+  filter(row_number()==1) |>
+  as.data.frame() |>
+  `rownames<-`("n_unique") |>
+  t()
+
+```
+
+
+
+&nbsp;
+
+### 1. Waffle Plot
+
+```{r}
+
+shape_table <- as.data.frame(table(shape=palmtrees$fruit_shape))
+
+d3_colors <- ggsci::pal_d3("category10")(10)
+
+shape_colors <- c(d3_colors[1],
+                  d3_colors[2],
+                  d3_colors[9],
+                  d3_colors[10],
+                  d3_colors[5],
+                  d3_colors[3],
+                  d3_colors[4])
+
+
+ggplot(data=shape_table) +
+  
+  aes(fill = shape, values = Freq) +
+  
+  waffle::geom_waffle(n_rows = 25, size = 0.33, colour = "white") +
+  
+  scale_fill_manual(values=shape_colors) +
+  
+  coord_equal() +
+  
+  theme_void() +
+  
+  labs(title="Shapes of Palm Tree Fruit",
+       fill=NULL) +
+  
+  theme(plot.title=element_text(hjust=0.5, vjust=4),
+        plot.subtitle=element_text(hjust=0.5, vjust=4),
+        plot.caption=element_text(vjust=-7),
+        axis.title.x=element_text(vjust=-4),
+        axis.title.y=element_text(vjust=5),
+        plot.margin=margin(1, 1, 1, 1, "cm"),
+        legend.position="top",
+        legend.key.size = unit(0.02, 'npc')) +
+  
+  guides(fill = guide_legend(nrow = 1))
+
+```
+
+
+
+&nbsp;
+
+### 2.
+
+```{r}
+
+```
+
+
+
+&nbsp;
+
+### 3.
+
+```{r}
+
+```
+
+
+
+&nbsp;
+
+### 4.
+
+```{r}
+
+```
+
+
