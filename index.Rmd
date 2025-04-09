@@ -20,7 +20,8 @@ title: "Home"
 - https://bookdown.org/yihui/rmarkdown-cookbook/favicon.html  
 - https://stackoverflow.com/a/19316337  
 - https://stackoverflow.com/a/635863  
-- https://ggplot2.tidyverse.org/reference/theme.html  
+- https://ggplot2.tidyverse.org/reference/theme.html 
+- https://r-charts.com/color-palettes/
 
 &nbsp;
 
@@ -31,5 +32,6 @@ title: "Home"
 - Turn Off Scientific Notation in R: `options(scipen=999)`
 - Change Git Commit Message: `git commit --amend`
 - Regex Tester: https://regexr.com/
+- See Color Palette: `scales::show_col(package::palette)`
 
 </div>
