@@ -15,8 +15,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, message=FALSE}
 
-library(tidyverse)
 ##install.packages("tidytuesdayR")
+library(tidytuesdayR)
+library(tidyverse)
+library(ggridges) # ridge plots
+library(ggbeeswarm) # beeswarm plots
+library(GGally) # parallel coordinates plots
+library(ggpie) # pie charts
+library(ggmosaic) # mosaic plots
+library(scatterpie) # scatter pies on map
+library(waffle) # for waffle plots
+library(DescTools) # for converting table to long
+library(treemap) # for tree maps
 
 ```
 
@@ -42,7 +52,7 @@ Use your newly-developed `ggplot` chops to create some nice graphs from a datase
 
 &nbsp;
 
-### Data
+### 0. Data
 
 I chose the (Palm Trees)[https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-03-18/readme.md] dataset.
 
@@ -53,7 +63,7 @@ palmtrees0 <- tuesdata$palmtrees
 
 
 palmtrees <- palmtrees0 |>
-  select(spec_name, acc_genus, palm_tribe, palm_subfamily,
+  dplyr::select(spec_name, acc_genus, palm_tribe, palm_subfamily,
          climbing, erect, max_stem_height_m, max_stem_dia_cm,
          average_fruit_length_cm, average_fruit_width_cm,
          fruit_size_categorical, fruit_shape, conspicuousness) |>
@@ -65,16 +75,22 @@ palmtrees <- palmtrees0 |>
 ```{r}
 
 palmtrees |>
-  select(where(is.numeric)) |>
+  dplyr::select(where(is.numeric)) |>
   summary()
 
 palmtrees |>
-  select(!where(is.numeric)) |>
+  dplyr::select(!where(is.numeric)) |>
   mutate(across(everything(), function(x) length(unique(x)))) |>
   filter(row_number()==1) |>
   as.data.frame() |>
   `rownames<-`("n_unique") |>
   t()
+
+```
+
+```{r}
+
+d3_colors <- ggsci::pal_d3("category10")(10)
 
 ```
 
@@ -88,12 +104,10 @@ palmtrees |>
 
 shape_table <- as.data.frame(table(shape=palmtrees$fruit_shape))
 
-d3_colors <- ggsci::pal_d3("category10")(10)
-
 shape_colors <- c(d3_colors[1],
                   d3_colors[2],
-                  d3_colors[9],
                   d3_colors[10],
+                  "darkolivegreen3", #d3_colors[9],
                   d3_colors[5],
                   d3_colors[3],
                   d3_colors[4])
@@ -111,7 +125,7 @@ ggplot(data=shape_table) +
   
   theme_void() +
   
-  labs(title="Shapes of Palm Tree Fruit",
+  labs(title="Fruit Shapes of Palm Trees",
        fill=NULL) +
   
   theme(plot.title=element_text(hjust=0.5, vjust=4),
@@ -131,9 +145,26 @@ ggplot(data=shape_table) +
 
 &nbsp;
 
-### 2.
+### 2. Tree Map
 
 ```{r}
+
+EC_table <- as.data.frame(table(Erect=palmtrees$erect,Climbing=palmtrees$climbing))
+
+#EC_table <- EC_table |> mutate(Freq2 = case_when(Freq==0 ~ 0,
+#                                                 TRUE ~ Freq + 10))
+
+treemap(dtf=EC_table,
+        index=c("Erect","Climbing"),
+        vSize="Freq",
+        type="index",
+        title="Palm Tree Characteristics",
+        fontsize.labels = c(11, 7),
+        #lowerbound.cex.labels = 0.5,
+        orce.print.labels= T,
+        fontcolor.labels = c("black", "white"),
+        align.labels = list(c("left", "top"), c("right", "bottom")),
+        aspRatio=1.75)
 
 ```
 
