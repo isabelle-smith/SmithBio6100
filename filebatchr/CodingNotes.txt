@@ -1,0 +1,24 @@
+
+## 2025.04.15 - - - - - - - - - - - - - - - - - - - - -
+
+### Pseudocode
+
+Create toy files
+Read in individual csv
+Write code to process csv
+Create output in a list
+Create a summary df
+Add columns for ID, filename, nrows
+Create summary plot
+Transfer list to line of summary df
+
+
+### Notes
+
+#### Need to open files with list.files()
+- may need reg expressions to get *.csv
+
+#### Global Variables
+- vector of filenames with paths
+- basenames()
+- vector of numbers pointing to columns in the .csv
