@@ -22,6 +22,6 @@ knitr::opts_chunk$set(echo = TRUE)
 | [Assignment 07](HW07-dplyr.html)                      | using the `dplyr` package                   |
 | [Assignment 08](HW08-probability.html)                | MLEs & PDFs                                 |
 | [Assignment 09](HW09/HW09-strategic-coding.html)      | strategic coding practices [.zip](HW)(.zip) |
-| [Assignment 10](HW10-ggplot.html)                     | `ggplot2` with TidyTuesday Data             |
+| [Assignment 10](HW10-ggplot.html)                     | `ggplot2` with TidyTuesday                  |
 
 </div>
