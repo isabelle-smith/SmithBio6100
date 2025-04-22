@@ -12,18 +12,19 @@ create_toy_data_files <- function(nrow=NULL,
   # assign parameter defaults
   if (is.null(nrow) | is.null(ncol) | is.null(nfiles)) {
     nrow=10
-    ncol=10
-    nfiles=15
+    ncol=9
+    nfiles=6
   }
   
   # function body
   
+  file_labels <- create_padded_labels(n=nfiles, string="Toy_Data", suffix=".csv")
+  
   for (i in 1:nfiles){
+    
     df <- as.data.frame(matrix(runif(nrow*ncol), nrow=nrow))
     
-    file_labels <- create_padded_labels(n=nfiles, string="Toy_Data", suffix=".csv")
-    
-    write.table(df, file=paste("CleanedData/ToyDataFiles/", file_labels[i], sep=""))
+    write.table(df, file=paste("CleanedData/ToyDataFiles/", file_labels[i], sep=""), sep=",")
   
   }
   

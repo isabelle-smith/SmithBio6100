@@ -176,6 +176,39 @@ treemap(dtf=EC_table,
 
 ```{r}
 
+r <- 100
+bb <- data.frame(x=rnorm(r, 7, 1), y=rnorm(r, 4, 1), z=rep(c("red","blue"),r/2))
+
+B <- bb |> 
+  
+  mutate(x_c = round(x),
+         y_c = round(y),
+         red=case_when(z=="red" ~ 1, z=="blue" ~ 0),
+         blue=case_when(z=="blue" ~ 1, z=="red" ~ 0)) |>
+  
+  group_by(x_c,y_c) |>
+  
+  summarize(n = n(),
+            red=sum(red),
+            blue=sum(blue))
+
+## average_fruit_length_cm & average_fruit_width_cm
+##  WITH  fruit_size_categorical  OR  fruit_conspic
+
+# d <- data.frame(x=rnorm(5), y=rnorm(5))
+# d$A <- abs(rnorm(5, sd=1))
+# d$B <- abs(rnorm(5, sd=2))
+# d$C <- abs(rnorm(5, sd=3))
+
+p9 <- ggplot(data=B) + 
+  scatterpie::geom_scatterpie(
+    aes(x=x_c, y=y_c), 
+    pie_scale=2,                  ## CHANGED from 4
+    cols=c("red", "blue")) + 
+   coord_fixed()
+  # scale_fill_manual(values=c("coral","grey95","grey90"))
+p9
+
 ```
 
 
