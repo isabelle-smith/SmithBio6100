@@ -1,0 +1,17 @@
+logfile: logfile.txt
+#######################
+R version: R version 4.3.2 (2023-10-31 ucrt)
+platform: x86_64-w64-mingw32/x64 (64-bit)
+running: Windows 11 x64 (build 26100)
+#----------------------
+random number seed: 728358648
+timestamp: Tue Apr 15 13:47:23 2025
+#----------------------
+libraries loaded:
+colorblindr colorspace dplyr forcats ggplot2 ggsci ggthemes lubridate purrr readr stringr tibble tidyr tidyverse treemap upscaler wesanderson
+#######################
+INFO  [15-Apr 13:59:13] ...checking function: create_toy_data_files()
+INFO  [15-Apr 14:09:34] ...checking function: create_toy_data_files()
+INFO  [15-Apr 14:09:46] ...checking function: create_toy_data_files()
+INFO  [15-Apr 14:09:51] ...checking function: create_toy_data_files()
+INFO  [15-Apr 14:26:05] ...checking function: create_toy_data_files()

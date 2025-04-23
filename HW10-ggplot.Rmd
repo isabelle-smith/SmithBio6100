@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Libraries
 
-```{r, message=FALSE}
+```{r packages, message=FALSE, warning=FALSE}
 
 ##install.packages("tidytuesdayR")
 library(tidytuesdayR)
@@ -36,7 +36,7 @@ library(treemap) # for tree maps
 
 ## Work
 
-Use your newly-developed `ggplot` chops to create some nice graphs from a dataset from the (TidyTuesday Dataset)[https://github.com/rfordatascience/tidytuesday] project. You can make any combination of four plots from the list below:  
+Use your newly-developed `ggplot` chops to create some nice graphs from a dataset from the [TidyTuesday Dataset](https://github.com/rfordatascience/tidytuesday) project. You can make any combination of four plots from the list below:  
 
 - Beeswarm Plot
 - Ridgeline Plot
@@ -54,9 +54,9 @@ Use your newly-developed `ggplot` chops to create some nice graphs from a datase
 
 ### 0. Data
 
-I chose the (Palm Trees)[https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-03-18/readme.md] dataset.
+I chose the [Palm Trees](https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-03-18/readme.md) dataset.
 
-```{r, message=FALSE}
+```{r data, message=FALSE}
 
 tuesdata <- tidytuesdayR::tt_load(2025, week = 11)
 palmtrees0 <- tuesdata$palmtrees
@@ -72,7 +72,7 @@ palmtrees <- palmtrees0 |>
 
 ```
 
-```{r}
+```{r stats}
 
 palmtrees |>
   dplyr::select(where(is.numeric)) |>
@@ -88,7 +88,7 @@ palmtrees |>
 
 ```
 
-```{r}
+```{r col}
 
 d3_colors <- ggsci::pal_d3("category10")(10)
 
@@ -100,7 +100,7 @@ d3_colors <- ggsci::pal_d3("category10")(10)
 
 ### 1. Waffle Plot
 
-```{r}
+```{r p1}
 
 shape_table <- as.data.frame(table(shape=palmtrees$fruit_shape))
 
@@ -147,20 +147,22 @@ ggplot(data=shape_table) +
 
 ### 2. Tree Map
 
-```{r}
+```{r p2}
 
 EC_table <- as.data.frame(table(Erect=palmtrees$erect,Climbing=palmtrees$climbing))
 
-#EC_table <- EC_table |> mutate(Freq2 = case_when(Freq==0 ~ 0,
-#                                                 TRUE ~ Freq + 10))
 
-treemap(dtf=EC_table,
+## increasing low counts for visualization purposes
+EC_table_e <- EC_table |> mutate(Freq = case_when(Freq==0 ~ 0,
+                                                 Freq < 10 ~ Freq + 20,
+                                                 TRUE ~ Freq))
+
+treemap(dtf=EC_table_e,
         index=c("Erect","Climbing"),
         vSize="Freq",
         type="index",
         title="Palm Tree Characteristics",
         fontsize.labels = c(11, 7),
-        #lowerbound.cex.labels = 0.5,
         orce.print.labels= T,
         fontcolor.labels = c("black", "white"),
         align.labels = list(c("left", "top"), c("right", "bottom")),
@@ -172,42 +174,50 @@ treemap(dtf=EC_table,
 
 &nbsp;
 
-### 3.
+### 3. Scatterpie
 
-```{r}
+```{r p3}
 
-r <- 100
-bb <- data.frame(x=rnorm(r, 7, 1), y=rnorm(r, 4, 1), z=rep(c("red","blue"),r/2))
-
-B <- bb |> 
+fruit_df_f <- palmtrees |>
   
-  mutate(x_c = round(x),
-         y_c = round(y),
-         red=case_when(z=="red" ~ 1, z=="blue" ~ 0),
-         blue=case_when(z=="blue" ~ 1, z=="red" ~ 0)) |>
+  ## filtering size for visualization purposes
+  filter(average_fruit_length_cm<10, average_fruit_width_cm<10) |>
   
-  group_by(x_c,y_c) |>
+  mutate(length_c = round(average_fruit_length_cm),
+         width_c = round(average_fruit_width_cm),
+         conspicuous = case_when(fruit_conspic=="conspicuous" ~ 1,
+                                 fruit_conspic=="cryptic" ~ 0),
+         cryptic = case_when(fruit_conspic=="cryptic" ~ 1,
+                             fruit_conspic=="conspicuous" ~ 0)) |>
+  
+  group_by(length_c,width_c) |>
   
   summarize(n = n(),
-            red=sum(red),
-            blue=sum(blue))
+            conspicuous=sum(conspicuous),
+            cryptic=sum(cryptic),
+            .groups="drop")
 
-## average_fruit_length_cm & average_fruit_width_cm
-##  WITH  fruit_size_categorical  OR  fruit_conspic
 
-# d <- data.frame(x=rnorm(5), y=rnorm(5))
-# d$A <- abs(rnorm(5, sd=1))
-# d$B <- abs(rnorm(5, sd=2))
-# d$C <- abs(rnorm(5, sd=3))
 
-p9 <- ggplot(data=B) + 
+ggplot(data=fruit_df_f) + 
   scatterpie::geom_scatterpie(
-    aes(x=x_c, y=y_c), 
-    pie_scale=2,                  ## CHANGED from 4
-    cols=c("red", "blue")) + 
-   coord_fixed()
-  # scale_fill_manual(values=c("coral","grey95","grey90"))
-p9
+    aes(x=width_c, y=length_c), 
+    pie_scale=2,
+    cols=c("conspicuous", "cryptic")) + 
+   coord_equal() +
+  scale_fill_manual(values=c("coral","turquoise")) +
+  labs(title="Distribution of Palm Tree Fruit",
+       x="Average Width",
+       y="Average Length",
+       fill="Color Type") +
+  
+  theme(plot.title=element_text(hjust=0.5, vjust=4),
+        plot.subtitle=element_text(hjust=0.5, vjust=4),
+        plot.caption=element_text(vjust=-7),
+        axis.title.x=element_text(vjust=-4),
+        axis.title.y=element_text(vjust=5),
+        plot.margin=margin(1, 1, 1, 1, "cm"),
+        legend.position="right")
 
 ```
 
@@ -217,7 +227,44 @@ p9
 
 ### 4.
 
-```{r}
+```{r p4}
+
+size_df <- palmtrees |>
+  
+  mutate(average_fruit_size = average_fruit_length_cm * average_fruit_width_cm,
+         
+         ## reversing order to be alphabetical in visualization
+         palm_subfamily_r = fct_rev(palm_subfamily))
+
+
+size_df_f <- size_df |>
+  
+  ## filtering size for visualization purposes
+  filter(average_fruit_size < 35)
+
+
+
+ggplot(data=size_df_f) +
+  
+  aes(x=average_fruit_size,y=palm_subfamily_r,fill=palm_subfamily_r) + 
+  
+  ggridges::geom_density_ridges() +
+  
+  ggridges::theme_ridges() +
+  
+  ggsci::scale_fill_observable() +
+  
+  labs(title="Distribution of Palm Tree Fruit by Subfamily",
+       x="Average Fruit Size",
+       y="Subfamily") +
+  
+  theme(plot.title=element_text(hjust=0.5, vjust=4),
+        plot.subtitle=element_text(hjust=0.5, vjust=4),
+        plot.caption=element_text(vjust=-7),
+        axis.title.x=element_text(hjust=0.5, vjust=-4),
+        axis.title.y=element_text(hjust=0.5, vjust=5),
+        plot.margin=margin(1, 1, 1, 1, "cm"),
+        legend.position="none")
 
 ```
 

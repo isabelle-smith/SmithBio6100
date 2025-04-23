@@ -291,17 +291,27 @@ $(document).ready(function () {
 <p> </p>
 <div id="libraries" class="section level2">
 <h2>Libraries</h2>
-<pre class="r"><code>library(tidyverse)
-##install.packages(&quot;tidytuesdayR&quot;)</code></pre>
+<pre class="r"><code>##install.packages(&quot;tidytuesdayR&quot;)
+library(tidytuesdayR)
+library(tidyverse)
+library(ggridges) # ridge plots
+library(ggbeeswarm) # beeswarm plots
+library(GGally) # parallel coordinates plots
+library(ggpie) # pie charts
+library(ggmosaic) # mosaic plots
+library(scatterpie) # scatter pies on map
+library(waffle) # for waffle plots
+library(DescTools) # for converting table to long
+library(treemap) # for tree maps</code></pre>
 <p> </p>
 </div>
 <div id="work" class="section level2">
 <h2>Work</h2>
 <p>Use your newly-developed <code>ggplot</code> chops to create some
-nice graphs from a dataset from the (TidyTuesday Dataset)[<a
-href="https://github.com/rfordatascience/tidytuesday"
-class="uri">https://github.com/rfordatascience/tidytuesday</a>] project.
-You can make any combination of four plots from the list below:</p>
+nice graphs from a dataset from the <a
+href="https://github.com/rfordatascience/tidytuesday">TidyTuesday
+Dataset</a> project. You can make any combination of four plots from the
+list below:</p>
 <ul>
 <li>Beeswarm Plot</li>
 <li>Ridgeline Plot</li>
@@ -315,11 +325,10 @@ You can make any combination of four plots from the list below:</p>
 </ul>
 <p> </p>
 <div id="data" class="section level3">
-<h3>Data</h3>
-<p>I chose the (Palm Trees)[<a
-href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-03-18/readme.md"
-class="uri">https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-03-18/readme.md</a>]
-dataset.</p>
+<h3>0. Data</h3>
+<p>I chose the <a
+href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-03-18/readme.md">Palm
+Trees</a> dataset.</p>
 <pre class="r"><code>tuesdata &lt;- tidytuesdayR::tt_load(2025, week = 11)
 palmtrees0 &lt;- tuesdata$palmtrees
 
@@ -365,18 +374,17 @@ palmtrees &lt;- palmtrees0 |&gt;
 ## fruit_size_categorical        2
 ## fruit_shape                   7
 ## fruit_conspic                 2</code></pre>
+<pre class="r"><code>d3_colors &lt;- ggsci::pal_d3(&quot;category10&quot;)(10)</code></pre>
 <p> </p>
 </div>
 <div id="waffle-plot" class="section level3">
 <h3>1. Waffle Plot</h3>
 <pre class="r"><code>shape_table &lt;- as.data.frame(table(shape=palmtrees$fruit_shape))
 
-d3_colors &lt;- ggsci::pal_d3(&quot;category10&quot;)(10)
-
 shape_colors &lt;- c(d3_colors[1],
                   d3_colors[2],
-                  d3_colors[9],
                   d3_colors[10],
+                  &quot;darkolivegreen3&quot;, #d3_colors[9],
                   d3_colors[5],
                   d3_colors[3],
                   d3_colors[4])
@@ -394,7 +402,7 @@ ggplot(data=shape_table) +
   
   theme_void() +
   
-  labs(title=&quot;Shapes of Palm Tree Fruit&quot;,
+  labs(title=&quot;Fruit Shapes of Palm Trees&quot;,
        fill=NULL) +
   
   theme(plot.title=element_text(hjust=0.5, vjust=4),
@@ -407,19 +415,117 @@ ggplot(data=shape_table) +
         legend.key.size = unit(0.02, &#39;npc&#39;)) +
   
   guides(fill = guide_legend(nrow = 1))</code></pre>
-<p><img src="HW10-ggplot_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="HW10-ggplot_files/figure-html/p1-1.png" width="672" /></p>
+<p> </p>
+</div>
+<div id="tree-map" class="section level3">
+<h3>2. Tree Map</h3>
+<pre class="r"><code>EC_table &lt;- as.data.frame(table(Erect=palmtrees$erect,Climbing=palmtrees$climbing))
+
+
+## increasing low counts for visualization purposes
+EC_table_e &lt;- EC_table |&gt; mutate(Freq = case_when(Freq==0 ~ 0,
+                                                 Freq &lt; 10 ~ Freq + 20,
+                                                 TRUE ~ Freq))
+
+treemap(dtf=EC_table_e,
+        index=c(&quot;Erect&quot;,&quot;Climbing&quot;),
+        vSize=&quot;Freq&quot;,
+        type=&quot;index&quot;,
+        title=&quot;Palm Tree Characteristics&quot;,
+        fontsize.labels = c(11, 7),
+        orce.print.labels= T,
+        fontcolor.labels = c(&quot;black&quot;, &quot;white&quot;),
+        align.labels = list(c(&quot;left&quot;, &quot;top&quot;), c(&quot;right&quot;, &quot;bottom&quot;)),
+        aspRatio=1.75)</code></pre>
+<p><img src="HW10-ggplot_files/figure-html/p2-1.png" width="672" /></p>
+<p> </p>
+</div>
+<div id="scatterpie" class="section level3">
+<h3>3. Scatterpie</h3>
+<pre class="r"><code>fruit_df_f &lt;- palmtrees |&gt;
+  
+  ## filtering size for visualization purposes
+  filter(average_fruit_length_cm&lt;10, average_fruit_width_cm&lt;10) |&gt;
+  
+  mutate(length_c = round(average_fruit_length_cm),
+         width_c = round(average_fruit_width_cm),
+         conspicuous = case_when(fruit_conspic==&quot;conspicuous&quot; ~ 1,
+                                 fruit_conspic==&quot;cryptic&quot; ~ 0),
+         cryptic = case_when(fruit_conspic==&quot;cryptic&quot; ~ 1,
+                             fruit_conspic==&quot;conspicuous&quot; ~ 0)) |&gt;
+  
+  group_by(length_c,width_c) |&gt;
+  
+  summarize(n = n(),
+            conspicuous=sum(conspicuous),
+            cryptic=sum(cryptic),
+            .groups=&quot;drop&quot;)
+
+
+
+ggplot(data=fruit_df_f) + 
+  scatterpie::geom_scatterpie(
+    aes(x=width_c, y=length_c), 
+    pie_scale=2,
+    cols=c(&quot;conspicuous&quot;, &quot;cryptic&quot;)) + 
+   coord_equal() +
+  scale_fill_manual(values=c(&quot;coral&quot;,&quot;turquoise&quot;)) +
+  labs(title=&quot;Distribution of Palm Tree Fruit&quot;,
+       x=&quot;Average Width&quot;,
+       y=&quot;Average Length&quot;,
+       fill=&quot;Color Type&quot;) +
+  
+  theme(plot.title=element_text(hjust=0.5, vjust=4),
+        plot.subtitle=element_text(hjust=0.5, vjust=4),
+        plot.caption=element_text(vjust=-7),
+        axis.title.x=element_text(vjust=-4),
+        axis.title.y=element_text(vjust=5),
+        plot.margin=margin(1, 1, 1, 1, &quot;cm&quot;),
+        legend.position=&quot;right&quot;)</code></pre>
+<p><img src="HW10-ggplot_files/figure-html/p3-1.png" width="672" /></p>
 <p> </p>
 </div>
 <div id="section" class="section level3">
-<h3>2.</h3>
-<p> </p>
-</div>
-<div id="section-1" class="section level3">
-<h3>3.</h3>
-<p> </p>
-</div>
-<div id="section-2" class="section level3">
 <h3>4.</h3>
+<pre class="r"><code>size_df &lt;- palmtrees |&gt;
+  
+  mutate(average_fruit_size = average_fruit_length_cm * average_fruit_width_cm,
+         
+         ## reversing order to be alphabetical in visualization
+         palm_subfamily_r = fct_rev(palm_subfamily))
+
+
+size_df_f &lt;- size_df |&gt;
+  
+  ## filtering size for visualization purposes
+  filter(average_fruit_size &lt; 35)
+
+
+
+ggplot(data=size_df_f) +
+  
+  aes(x=average_fruit_size,y=palm_subfamily_r,fill=palm_subfamily_r) + 
+  
+  ggridges::geom_density_ridges() +
+  
+  ggridges::theme_ridges() +
+  
+  ggsci::scale_fill_observable() +
+  
+  labs(title=&quot;Distribution of Palm Tree Fruit by Subfamily&quot;,
+       x=&quot;Average Fruit Size&quot;,
+       y=&quot;Subfamily&quot;) +
+  
+  theme(plot.title=element_text(hjust=0.5, vjust=4),
+        plot.subtitle=element_text(hjust=0.5, vjust=4),
+        plot.caption=element_text(vjust=-7),
+        axis.title.x=element_text(hjust=0.5, vjust=-4),
+        axis.title.y=element_text(hjust=0.5, vjust=5),
+        plot.margin=margin(1, 1, 1, 1, &quot;cm&quot;),
+        legend.position=&quot;none&quot;)</code></pre>
+<pre><code>## Picking joint bandwidth of 0.564</code></pre>
+<p><img src="HW10-ggplot_files/figure-html/p4-1.png" width="672" /></p>
 </div>
 </div>
 
