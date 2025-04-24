@@ -73,7 +73,7 @@ for (i in 1:length(file_names)){
 
   df <- read.table(file=file_names[[i]], header=TRUE, sep=",")
 
-  . <- crunch_data(df=df, crunch_cols=unlist(crunch_cols), param_names=param_names)
+  . <- crunch_data(df=df, param_names=param_names)
 
   output_df[i,] <- .
 
@@ -92,7 +92,7 @@ output_df <- cbind(ID=1:length(file_names),
 
 ## one big file ~ ~ ~ ~ ~ ~ ~
 
-##build_function("file_batch_r")
+# ##build_function("file_batch_r")
 # 
 # source_batch(folder="Functions")
 # 
@@ -101,4 +101,12 @@ output_df <- cbind(ID=1:length(file_names),
 #              crunch_cols=crunch_cols,
 #              param_names=param_names)
 
+
+
+## Apr. 22, 2025 (class 26) - - - - - - - - - - - - - - - - - - - - -
+
+# ## 'insidious error' in `lapply()`
+# 
+# z <- lapply(file_names, read.table, sep=",")
+# final <- lapply(z, crunch_data) ## INCORRECT -> does not specify crunch_cols
 

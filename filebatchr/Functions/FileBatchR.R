@@ -2,14 +2,16 @@
 # FUNCTION file_batch_r
 # required packages: none
 # description:
-# inputs:
-# outputs:
+# inputs: file_names = list of file names
+#         crunch_cols = list of columns to analyze in df
+#         fun = name of operations function
+# outputs: output_df with rows for each data file
 ########################################
-file_batch_r <- function(file_names=NULL, fun=NULL, crunch_cols=NULL, param_names=NULL){
+file_batch_r <- function(file_names=NULL, fun=NULL, param_names=NULL){
   
   # assign parameter defaults
   if (is.null(file_names)){
-    return(print("No input..."))
+    stop("No input...")
   }
   
   # function body
@@ -23,7 +25,7 @@ file_batch_r <- function(file_names=NULL, fun=NULL, crunch_cols=NULL, param_name
     
     df <- read.table(file=file_names[[i]], header=TRUE, sep=",")
     
-    . <- fun(df=df, crunch_cols=unlist(crunch_cols), param_names=param_names)
+    . <- fun(df=df, param_names=param_names)
     
     output_df[i,] <- .
     
