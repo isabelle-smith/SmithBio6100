@@ -40,7 +40,7 @@ set_up_log()
 
 ## Apr. 22, 2025 (class 26) - - - - - - - - - - - - - - - - - - - - -
 
-#source_batch(folder="Functions")
+source_batch(folder="Functions")
 
 
 #create_toy_data_files(nrow=15, ncol=10, nfiles=8)
@@ -95,18 +95,104 @@ output_df <- cbind(ID=1:length(file_names),
 # ##build_function("file_batch_r")
 # 
 # source_batch(folder="Functions")
-# 
-# file_batch_r(file_names=file_names,
-#              fun=crunch_data,
-#              crunch_cols=crunch_cols,
-#              param_names=param_names)
+
+file_batch_r(file_names=file_names,
+            fun=crunch_data,
+             crunch_cols=crunch_cols,
+             param_names=param_names)
 
 
 
-## Apr. 22, 2025 (class 26) - - - - - - - - - - - - - - - - - - - - -
+## Apr. 22, 2025 (class 27) - - - - - - - - - - - - - - - - - - - - -
 
 # ## 'insidious error' in `lapply()`
 # 
 # z <- lapply(file_names, read.table, sep=",")
 # final <- lapply(z, crunch_data) ## INCORRECT -> does not specify crunch_cols
+
+
+
+
+
+## Outlined File ~~~~
+
+
+
+# ## Initialize ----
+# 
+# library(upscaler)
+# library(ggplot2)
+# 
+# set_up_log()
+# 
+# source_batch(folder="Functions")
+# 
+# 
+# 
+# ## Create Toy Data Files ----
+# 
+# l('create toy data files')
+# 
+# create_toy_data_files(nrow=15, ncol=10, nfiles=8)
+# 
+# 
+# 
+# ## Create Global Variables ----
+# 
+# l('create global variables')
+# 
+# file_names <- list.files(pattern="\\.csv$",
+#                          path="CleanedData/ToyDataFiles",
+#                          full.names=TRUE)
+# param_names <- c("avg", "skew", "weird")
+# 
+# 
+# 
+# ## Run For Loop ----
+# 
+# l('start of for loop')
+# 
+# m <- matrix(rep(NA, length(file_names)*length(param_names)), nrow=length(file_names))
+# output_df <- as.data.frame(m)
+# names(output_df) <- param_names
+# nobs <- rep(NA, length(file_names))
+# 
+# for (i in 1:length(file_names)){
+# 
+#   show_progress_bar(index=i)
+# 
+#   df <- read.table(file=file_names[[i]], header=TRUE, sep=",")
+# 
+#   . <- crunch_data(df=df, param_names=param_names)
+# 
+#   output_df[i,] <- .
+# 
+#   nobs[i] <- nrow(df)
+# 
+# }
+# 
+# l('end of for loop')
+# 
+# 
+# 
+# ## Output ----
+# 
+# l('output')
+# 
+# output_df <- cbind(ID=1:length(file_names),
+#                    file=basename(unlist(file_names)),
+#                    nobs=nobs,
+#                    output_df)
+# 
+# 
+# 
+# ## Run Again with Function ----
+# 
+# l('run again with function')
+# 
+# file_batch_r(file_names=file_names,
+#              fun=crunch_data,
+#              param_names=param_names)
+
+
 

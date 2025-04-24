@@ -1,20 +1,14 @@
-logfile: logfile.txt
+logfile: dogfood-logfile.txt
 #######################
 R version: R version 4.3.2 (2023-10-31 ucrt)
 platform: x86_64-w64-mingw32/x64 (64-bit)
 running: Windows 11 x64 (build 26100)
 #----------------------
-random number seed: 487988048
-timestamp: Thu Apr 24 14:02:09 2025
+random number seed: -806845953
+timestamp: Thu Apr 24 14:26:32 2025
 #----------------------
 libraries loaded:
 colorblindr colorspace DescTools dplyr forcats GGally ggbeeswarm ggmosaic ggpie ggplot2 ggridges ggsci ggthemes lubridate purrr readr scatterpie stringr tibble tidyr tidytuesdayR tidyverse treemap upscaler waffle wesanderson
 #######################
-INFO  [24-Apr 14:02:10] create toy data files
-INFO  [24-Apr 14:02:10] create global variables
-INFO  [24-Apr 14:02:10] start of for loop
-........
-INFO  [24-Apr 14:02:10] end of for loop
-INFO  [24-Apr 14:02:10] output
-INFO  [24-Apr 14:02:10] run again with function
-INFO  [24-Apr 14:17:53] dog food: initialize
+INFO  [24-Apr 14:26:32] dog food: create global variables
+INFO  [24-Apr 14:26:32] dog food: run with function
